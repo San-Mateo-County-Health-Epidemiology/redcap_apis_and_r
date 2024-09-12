@@ -1,0 +1,68 @@
+---
+title: "Using REDCap APIs to report ED Census data"
+format: 
+  revealjs:
+      width: 1690
+      height: 1080
+      margin: .2
+      linkcolor: "#056cb6"
+editor: visual
+transition: fade
+---
+
+## R workflow {.section-header background-image="images/blank-slide.png" background-size="contain"}
+
+
+::: {.fragment}
+This whole workflow runs from a single R script. The R script:
+:::
+
+::: {.fragment}
+* fetches the data from ReddiNet with an API
+:::
+
+::: {.fragment}
+* imports the data into REDCap with a different API
+:::
+
+::: {.fragment}
+* creates a PDF report using R Markdown
+:::
+
+::: {.fragment}
+* emails our inbox the PDF report and a summary of the processed data
+:::
+
+::: {.fragment .highlight-red}
+* imports the data into REDCap with a different API
+:::
+
+##  {.section-header background-image="images/redcap-apis_sidebar.png" background-size="contain" background-color="#1a1a1a"}
+
+::: notes
+testing out notes
+:::
+
+## {.section-header background-image="images/redcap-apis_api.png" background-size="contain" background-color="#1a1a1a"}
+
+::: notes
+testing out notes
+:::
+
+## {.section-header background-image="images/redcap-apis_api-playground.png" background-size="contain" background-color="#1a1a1a"}
+
+::: notes
+testing out notes
+:::
+
+## Code {.section-header background-image="images/blank-slide.png" background-size="contain" background-color="#1a1a1a"}
+
+```{r}
+library(redcapAPI)
+
+
+```
+
+::: notes
+testing out notes
+:::
