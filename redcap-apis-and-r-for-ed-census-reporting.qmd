@@ -4,37 +4,62 @@ format:
   revealjs:
       width: 1690
       height: 1080
-      margin: .2
+      margin: 0
+      code-block-height: 730px
       linkcolor: "#056cb6"
+      css: styles.css
+      theme: _extensions/custom.scss
 editor: visual
 transition: fade
+execute:
+  echo: true
+  eval: false
 ---
 
 ## R workflow {.section-header background-image="images/blank-slide.png" background-size="contain"}
 
 
-::: {.fragment}
+::: {.fragment style="font-size: 4rem"}
+
 This whole workflow runs from a single R script. The R script:
+
+:::
+
+. . . 
+
+::: {.incremental code-line-numbers="4"}
+- fetches the data from ReddiNet with an API
+- creates a PDF report using R Markdown
+- emails our inbox the PDF report and a summary of the processed data
+- imports the data into REDCap with a different API
+:::
+
+
+## Testing fragments
+::: {.fragment}
+Fade in
 :::
 
 ::: {.fragment}
-* fetches the data from ReddiNet with an API
+Slide up while fading in
+:::
+
+. . . 
+
+::: {.fragment}
+Slide left while fading in
 :::
 
 ::: {.fragment}
-* imports the data into REDCap with a different API
+Fade in then semi out
 :::
 
-::: {.fragment}
-* creates a PDF report using R Markdown
-:::
-
-::: {.fragment}
-* emails our inbox the PDF report and a summary of the processed data
+::: {.fragment .strike}
+Strike
 :::
 
 ::: {.fragment .highlight-red}
-* imports the data into REDCap with a different API
+Highlight red
 :::
 
 ##  {.section-header background-image="images/redcap-apis_sidebar.png" background-size="contain" background-color="#1a1a1a"}
@@ -57,7 +82,8 @@ testing out notes
 
 ## Code {.section-header background-image="images/blank-slide.png" background-size="contain" background-color="#1a1a1a"}
 
-```{r}
+```r
+#| echo: true
 library(redcapAPI)
 
 
@@ -66,3 +92,34 @@ library(redcapAPI)
 ::: notes
 testing out notes
 :::
+
+## 4. Automated email {.section-header background-image="images/blank-slide.png" background-size="contain" background-color="#1a1a1a"}
+
+```{r}
+#| code-line-numbers: "|3-18|20-25"
+library(sendmailR)
+
+# inputs ----
+body <- "text here"
+final_file <- output_file
+attach_name <- "text here"
+  
+weekday <- as.character(lubridate::wday(Sys.Date()-1, label = T, abbr = F))
+date <- Sys.Date()-1
+subject <- paste0("ED Census Update for ", weekday, " ", date)
+  
+attach_obj <- mime_part(x = final_file,
+                        name = attach_name)
+body_with_attach <- list(body, 
+                         attach_obj)
+  
+from <- sprintf("email@email.com")
+to <- sprintf(c("email@email.com"))
+
+# send email ----
+sendmail(from = from,
+         to = to,
+         subject = subject,
+         msg = body_with_attach,
+         control = list(smtpServe = "server"))
+```
