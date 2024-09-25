@@ -1,14 +1,33 @@
 /*-- scss:defaults --*/
-$presentation-h2-font-size: 2.7em;
+$presentation-font-size-root: 40px;
+$presentation-h2-font-size: 6rem;
+$presentation-font-smaller: 6rem;
 $presentation-heading-color: white;
 $presentation-heading-line-height: 3;
 $presentation-block-margin: 1px; 
 
-$presentation-font-size-root: 40px;
-$presentation-font-smaller: 1.8em;
-$font-size: 2em;
+$white:    #fff !default;
+$black:    #000 !default;
+
 $font-family-sans-serif: 'Arial', sans-serif;
 $mainFont: 'Arial', sans-serif;
+
+$h1-font-size:                3rem !default;
+$h2-font-size:                2.5rem !default;
+$h3-font-size:                2rem !default;
+
+/*$body-color: black;*/
+h1, h2 {
+  text-align: center;
+  color: red;
+}
+
+p, ul, li {
+  text-align: center;
+  color: blue;
+  font-size: 3rem;
+}
+
 
 /* TODO: Customize html appearance by setting SCSS variables */
 /* See https://quarto.org/docs/output-formats/html-themes.html#theme-options */
