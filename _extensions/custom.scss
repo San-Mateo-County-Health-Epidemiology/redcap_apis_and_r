@@ -18,13 +18,13 @@ $h3-font-size:                2rem !default;
 
 /*$body-color: black;*/
 h1, h2 {
-  text-align: center;
-  color: red;
+  text-align: left;
+  color: $black;
 }
 
 p, ul, li {
-  text-align: center;
-  color: blue;
+  text-align: left;
+  color: $black;
   font-size: 3rem;
 }
 
