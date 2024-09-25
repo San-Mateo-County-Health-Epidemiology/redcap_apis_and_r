@@ -1,7 +1,7 @@
 /*-- scss:defaults --*/
+
 $presentation-font-size-root: 40px;
 $presentation-h2-font-size: 6rem;
-$presentation-font-smaller: 6rem;
 $presentation-heading-color: white;
 $presentation-heading-line-height: 3;
 $presentation-block-margin: 1px; 
@@ -10,16 +10,12 @@ $white:    #fff !default;
 $black:    #000 !default;
 
 $font-family-sans-serif: 'Arial', sans-serif;
-$mainFont: 'Arial', sans-serif;
 
-$h1-font-size:                3rem !default;
-$h2-font-size:                2.5rem !default;
-$h3-font-size:                2rem !default;
 
-/*$body-color: black;*/
-h1, h2 {
-  text-align: left;
-  color: $black;
+ul.slide-menu-item, li.slide-menu-item, li.slide-menu-item-vertical, ul.slide-menu-item-vertical ul.toolbar-panel-button, li.toolbar-panel-button {
+ 
+ font-size: 1rem; 
+  
 }
 
 p, ul, li {
@@ -28,10 +24,23 @@ p, ul, li {
   font-size: 3rem;
 }
 
+.slide-background-content{
+  background-image: "images/blank-slide.png";
+  background-size: contain;
+}
 
-/* TODO: Customize html appearance by setting SCSS variables */
-/* See https://quarto.org/docs/output-formats/html-themes.html#theme-options */
+#workflow-details-1{
+  
+  h2 {
+      text-align: left;
+      position:fixed;
+      left:5px;
+      bottom:5px;
+      color: $black;
+      font-size: 6rem;
+  }
 
+  
+}
 /*-- scss:rules --*/
 
-/* TODO: Provide custom CSS rules */
