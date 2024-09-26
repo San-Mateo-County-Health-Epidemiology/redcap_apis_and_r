@@ -2,13 +2,17 @@
 title: "Using REDCap APIs to report ED Census data"
 format: 
   revealjs:
+      incremental: true
       width: 1690
       height: 1080
       margin: 0
       code-block-height: 730px
       linkcolor: "#056cb6"
-      css: styles.css
       theme: _extensions/custom.scss
+title-slide-attributes: 
+  data-background-image: "images/title-image.jpg"
+  data-background-size: "contain"
+  data-background-position: "top"
 editor: visual
 transition: fade
 execute:
@@ -16,71 +20,151 @@ execute:
   eval: false
 ---
 
-## R workflow {.section-header background-image="images/blank-slide.png" background-size="contain"}
+## Agenda {background-image="images/blank-slide.png" background-size="contain"}
 
+* Workflow overview
+* Workflow details
+* Lessons learned
+* Questions
+* Additional resources
 
-::: {.fragment style="font-size: 4rem"}
+# Workflow overview
+
+## Workflow overview {.section-header}
+
+![](images/section-workflow-overview.jpg){.absolute top=0 left=0 right=0, width=1690}
+
+## Motivation {background-image="images/blank-slide.png" background-size="contain"}
+
+Each day, we report the ED Census for each of our six hospitals and the census overall. The report includes:
+
+* Census values
+* An indication if the values are higher than expected
+* A PDF report with a trend of the last 30 days of values for context
+
+## Initial workflow {background-image="images/blank-slide.png" background-size="contain"}
+
+![](images/initial-workflow-reddinet-login.png){.absolute top=266.4 left=54.5 width=410.4 height=361.2}
+
+![](images/initial-workflow-reddinet-export.png){.absolute top=329.8 left=415.8 width=609.1 height=247.2}
+
+![](images/initial-workflow-ed-census-excel.png){.absolute top=612 left=442.4 width=755 height=290}
+
+![](images/initial-workflow-ed-census-chart.png){.absolute top=335.5 left=1106.6 width="642.2" height="524.8"}
+
+## Workflow with REDCap {background-image="images/blank-slide.png" background-size="contain"}
+
+# Workflow details
+
+## Workflow details {}
+
+![](images/section-workflow-details.jpg){.absolute top=0 left=0 right=0}
+## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
+
+**REDCap**  
+* Gives us a stable place to store our data  
+* Allows us to create new records for new data, instead of overwriting an excel file each day   
+**R**
+* R processes, moves and formats the data in and out of REDCap   
+**Windows Task Scheduler**  
+* Allows the process to be fully automated and run without user intervention  
+**Application Programming Interfaces (API)**  
+* A method of sending and receiving data  
+* Can run APIs in and out of REDCap and other systems  
+
+## Workflow steps {background-image="images/blank-slide.png" background-size="contain"}
+
+This whole workflow runs from a single R script. The R script has four main components:  
+
+1. Fetch data: retrieve and process source data  
+2. REDCap APIs: send data in and out of REDCap  
+3. R Markdown: format data into a PDF report  
+4. Automated email: package everything together for the end-user   
+5. (optional): manual data entry  
+
+## 1. Fetch data {background-image="images/blank-slide.png" background-size="contain"}
+
+* First we need to get source data into REDCap  
+* Ideally this should be automated, meaning no human interference or manual downloading  
+* Best options:  
+    * **API (application programming interface) – this is what we use for this workflow**  
+    * ODBC connection to a cloud database  
+    * sFTP (secure file transfer protocol)  
+
+## 1. Fetch data {.section-header background-image="images/blank-slide.png" background-size="contain"}
+
+```r
+#| echo: true
+
+library(tidyverse)
+library(redcapAPI)
+library(httr) 
+
+## fetch and import new data into REDCap ----
+api_response <- GET(url = url,
+                    add_headers(Authorization = key),
+                    encode = "json")
+
+### convert to flat file + do basic cleaning ----
+edvol_today <- jsonlite::fromJSON(rawToChar(api_response$content)) %>%
+  jsonlite::flatten() %>%
+  filter(name %in% hosp_names) %>%
+  select(name, matches("edvol")) %>%
+  rename(edvol = edVolume.value,
+         edvol_update = edVolume.updateTime) %>%
+  mutate(edvol = case_when(as.Date(edvol_update) == Sys.Date() ~ edvol,
+                           TRUE ~ NA_integer_, 
+                           as.Date(edvol_update) < Sys.Date() ~ NA_integer_),
+         edvol_update = case_when(!is.na(edvol) ~ edvol_update, 
+                                  TRUE ~ NA_character_),
+         across(matches("edvol"), ~ as.character(.x))) %>%
+  pivot_longer(names_to = "var",
+               values_to = "val",
+               cols = matches("edvol")) %>%
+  mutate(new_var = paste0(var, "_", name_new)) %>%
+  select(-c(name_new, var)) %>%
+  pivot_wider(names_from = new_var, values_from = val) %>%
+  select(record_id, date, everything()) %>%
+  select_if(!is.na(.))
+
+### send into REDCap ----
+import_data <- importRecords(redcap_con,
+                             data = edvol_today,
+                             overwriteBehavior = "normal",
+                             returnContent = "count",
+                             returnData = F)
+
+```
+
+## R workflow {background-image="images/blank-slide.png" background-size="contain"}
 
 This whole workflow runs from a single R script. The R script:
 
-:::
-
-. . . 
-
-::: {.incremental code-line-numbers="4"}
-- fetches the data from ReddiNet with an API
-- creates a PDF report using R Markdown
-- emails our inbox the PDF report and a summary of the processed data
-- imports the data into REDCap with a different API
-:::
+* fetches the data from ReddiNet with an API
+* creates a PDF report using R Markdown
+* emails our inbox the PDF report and a summary of the processed data
+* imports the data into REDCap with a different API
 
 
-## Testing fragments
-::: {.fragment}
-Fade in
-:::
-
-::: {.fragment}
-Slide up while fading in
-:::
-
-. . . 
-
-::: {.fragment}
-Slide left while fading in
-:::
-
-::: {.fragment}
-Fade in then semi out
-:::
-
-::: {.fragment .strike}
-Strike
-:::
-
-::: {.fragment .highlight-red}
-Highlight red
-:::
-
-##  {.section-header background-image="images/redcap-apis_sidebar.png" background-size="contain" background-color="#1a1a1a"}
+##  {background-image="images/redcap-apis_sidebar.png" background-size="contain"}
 
 ::: notes
 testing out notes
 :::
 
-## {.section-header background-image="images/redcap-apis_api.png" background-size="contain" background-color="#1a1a1a"}
+## {background-image="images/redcap-apis_api.png" background-size="contain"}
 
 ::: notes
 testing out notes
 :::
 
-## {.section-header background-image="images/redcap-apis_api-playground.png" background-size="contain" background-color="#1a1a1a"}
+## {.section-header background-image="images/redcap-apis_api-playground.png" background-size="contain"}
 
 ::: notes
 testing out notes
 :::
 
-## Code {.section-header background-image="images/blank-slide.png" background-size="contain" background-color="#1a1a1a"}
+## Code {.section-header background-image="images/blank-slide.png" background-size="contain"}
 
 ```r
 #| echo: true
@@ -93,7 +177,40 @@ library(redcapAPI)
 testing out notes
 :::
 
-## 4. Automated email {.section-header background-image="images/blank-slide.png" background-size="contain" background-color="#1a1a1a"}
+
+## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
+```{r}
+#| code-line-numbers: "|3-18|20-25"
+
+```
+
+## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
+
+* R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)
+* You can render a Markdown or Quarto file from another script and specify where you want the file to be saved
+
+```{r}
+#| code-line-numbers: "|3-18|20-25"
+
+2+2 
+
+```
+
+
+## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain" .nostretch}
+
+![](images/ed-census-chart-markdown.png){.nostretch fig-align="center" width="800px"}
+
+## 4. Automated email {background-image="images/blank-slide.png" background-size="contain"}
+
+ * To make things as easy as possible for the end user, the last step of the R script sends an email with all the information and attaches the PDF rendered in step 3
+
+ * R has a couple packages for sending emails:
+
+   * [sendmailR](https://github.com/olafmersmann/sendmailR): for plain text emails
+   * [blastula](https://github.com/rstudio/blastula): for rich text emails  
+
+## 4. Automated email {background-image="images/blank-slide.png" background-size="contain"}
 
 ```{r}
 #| code-line-numbers: "|3-18|20-25"
@@ -123,3 +240,7 @@ sendmail(from = from,
          msg = body_with_attach,
          control = list(smtpServe = "server"))
 ```
+
+## 4. Automated email {background-image="images/blank-slide.png" background-size="contain" .nostretch}
+
+![](images/automated-email-example.png){.nostretch fig-align="center" width="800px"}
