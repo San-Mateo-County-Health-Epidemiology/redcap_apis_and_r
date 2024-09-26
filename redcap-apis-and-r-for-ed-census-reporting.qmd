@@ -58,6 +58,27 @@ Each day, we report the ED Census for each of our six hospitals and the census o
 
 ## Workflow with REDCap {background-image="images/blank-slide.png" background-size="contain"}
 
+::: {.fragment}
+![](images/redcap-workflow-wts-r.png){.absolute top=300 left=50 width=550}
+:::
+
+::: {.fragment}
+![](images/redcap-workflow-redcap.png){.absolute top=350 left=610 width=450}
+:::
+
+::: {.fragment}
+![](images/redcap-workflow-pdf.png){.absolute top=527 left=610 width=300}
+:::
+
+::: {.fragment}
+![](images/redcap-workflow-email-icon.png){.absolute top=640 left=610 width=330}
+:::
+
+
+::: {.fragment}
+![](images/redcap-workflow-email-example.png){.absolute top=350 left=1150 width=600}
+:::
+
 # Workflow details {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
 
 ![](images/section-workflow-details.jpg){.absolute top="0" left="0" right="0"}
