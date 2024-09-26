@@ -13,6 +13,7 @@ library(tidyverse)
 library(lubridate)
 library(redcapAPI)
 library(sendmailR)
+library(httr)
 
 # set-up -------------------------------------------
 ## fetch and import new data into REDCap ----
