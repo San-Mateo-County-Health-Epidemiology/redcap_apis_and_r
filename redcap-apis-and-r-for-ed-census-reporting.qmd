@@ -180,7 +180,17 @@ importRecords(redcap_con,
 
 ## 2. REDCap APIs {background-image="images/blank-slide.png" background-size="contain"}
 
-\<\< insert images here \>\>
+::: {.fragment}
+![](images/redcap-apis-1.png){.absolute top=400 left=100 width=400}
+:::
+
+::: {.fragment}
+![](images/redcap-apis-2.png){.absolute top=288 left=110 width=1400}
+:::
+
+::: {.fragment}
+![](images/redcap-apis-3.png){.absolute top=592 left=205 width=1500}
+:::
 
 ## 2. REDCap APIs in R {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -356,11 +366,11 @@ sendmail(from = from,
 
 ## 4. Automated email {.nostretch background-image="images/blank-slide.png" background-size="contain"}
 
-![](images/automated-email-example.png){.nostretch fig-align="center" width="800px"}
+![](images/redcap-workflow-email-example.png){.nostretch fig-align="center" width="800px"}
 
 ## 5. Back-up: manual entry {background-image="images/blank-slide.png" background-size="contain"}
 
--   If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap\
+-   If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap
 -   This is a huge pro of storing the data in REDCap instead of in an Excel or database without a front end
 
 # Lessons learned
