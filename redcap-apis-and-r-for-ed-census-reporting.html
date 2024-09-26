@@ -407,13 +407,9 @@
 </ul>
 </section>
 <section>
-<section id="workflow-overview" class="title-slide slide level1 center">
+<section id="workflow-overview" class="title-slide slide level1 center" data-background-image="images/section-workflow-overview.jpg" data-background-position="top" data-background-size="1690px">
 <h1>Workflow overview</h1>
 
-</section>
-<section id="workflow-overview-1" class="slide level2 section-header">
-<h2>Workflow overview</h2>
-<p><img data-src="images/section-workflow-overview.jpg" class="absolute" style="top: 0px; left: 0px; right: 0,; width: 1690px; "></p>
 </section>
 <section id="motivation" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Motivation</h2>
@@ -426,31 +422,65 @@
 </section>
 <section id="initial-workflow" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Initial workflow</h2>
-<p><img data-src="images/initial-workflow-reddinet-login.png" class="absolute" style="top: 266.4px; left: 54.5px; width: 410.4px; height: 361.2px; "></p>
-<p><img data-src="images/initial-workflow-reddinet-export.png" class="absolute" style="top: 329.8px; left: 415.8px; width: 609.1px; height: 247.2px; "></p>
-<p><img data-src="images/initial-workflow-ed-census-excel.png" class="absolute" style="top: 612px; left: 442.4px; width: 755px; height: 290px; "></p>
-<p><img data-src="images/initial-workflow-ed-census-chart.png" class="absolute" style="top: 335.5px; left: 1106.6px; width: 642.2px; height: 524.8px; "></p>
+<div class="fragment">
+<p><img data-src="images/initial-workflow-reddinet-login.png" class="absolute" style="top: 300px; left: 50px; width: 350px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/initial-workflow-reddinet-export.png" class="absolute" style="top: 350px; left: 400px; width: 560px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/initial-workflow-ed-census-excel.png" class="absolute" style="top: 620px; left: 300px; width: 750px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/initial-workflow-ed-census-chart.png" class="absolute" style="top: 300px; left: 1050px; width: 600px; "></p>
+</div>
 </section>
 <section id="workflow-with-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Workflow with REDCap</h2>
 </section></section>
 <section>
-<section id="workflow-details" class="title-slide slide level1 center">
+<section id="workflow-details" class="title-slide slide level1 center" data-background-image="images/section-workflow-details.jpg" data-background-position="top" data-background-size="1690px">
 <h1>Workflow details</h1>
-
+<p><img data-src="images/section-workflow-details.jpg" class="absolute" style="top: 0px; left: 0px; right: 0px; "></p>
 </section>
-<section id="workflow-details-1" class="slide level2">
-<h2>Workflow details</h2>
-<p><img data-src="images/section-workflow-details.jpg" class="absolute" style="top: 0px; left: 0px; right: 0px; "> ## Key workflow components {background-image=“images/blank-slide.png” background-size=“contain”}</p>
-<p><strong>REDCap</strong><br>
-* Gives us a stable place to store our data<br>
-* Allows us to create new records for new data, instead of overwriting an excel file each day<br>
-<strong>R</strong> * R processes, moves and formats the data in and out of REDCap<br>
-<strong>Windows Task Scheduler</strong><br>
-* Allows the process to be fully automated and run without user intervention<br>
-<strong>Application Programming Interfaces (API)</strong><br>
-* A method of sending and receiving data<br>
-* Can run APIs in and out of REDCap and other systems</p>
+<section id="key-workflow-components" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Key workflow components</h2>
+<div class="fragment">
+<p>REDCap</p>
+<ul>
+<li class="fragment">Gives us a stable place to store our data<br>
+</li>
+<li class="fragment">Allows us to create new records for new data, instead of overwriting an excel file each day<br>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<p>R</p>
+<ul>
+<li class="fragment">A statistical programming language that is also used for data management and data science</li>
+<li class="fragment">R processes, moves and formats the data in and out of REDCap<br>
+</li>
+</ul>
+</div>
+</section>
+<section id="key-workflow-components-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Key workflow components</h2>
+<div class="fragment">
+<p>Windows Task Scheduler</p>
+<ul>
+<li class="fragment">Default application on Windows for running tasks automatically</li>
+<li class="fragment">Allows the process to be fully automated and run without user intervention</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Application Programming Interfaces (API)</p>
+<ul>
+<li class="fragment">A method of sending and receiving data<br>
+</li>
+<li class="fragment">Can run APIs in and out of REDCap and other systems<br>
+</li>
+</ul>
+</div>
 </section>
 <section id="workflow-steps" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Workflow steps</h2>
@@ -549,27 +579,28 @@
 <li class="fragment"><a href="https://github.com/vubiostat/redcapAPI">redcapAPI</a>: this is what we typically use</li>
 <li class="fragment"><a href="https://ouhscbbmc.github.io/REDCapR/">REDCapR</a>: we’ve used this in the past when we couldn’t get what we needed from REDCapAPI</li>
 </ul>
+<div class="fragment">
 <p>For a comparison of different packages, see <a href="https://github.com/vubiostat/redcapAPI">here</a> (note: this might be biased as it was written by the <code>REDCapAPI</code> package developers)</p>
+</div>
 </section>
 <section id="sending-data-into-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>2. Sending data into REDCap</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|3-18|20-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(redcapAPI)</span>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1|3-7|9-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(redcapAPI)</span>
 <span id="cb2-2"><a href=""></a></span>
 <span id="cb2-3"><a href=""></a><span class="co"># set up connection ----</span></span>
 <span id="cb2-4"><a href=""></a>url <span class="ot">&lt;-</span> <span class="st">""</span></span>
 <span id="cb2-5"><a href=""></a>token <span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb2-6"><a href=""></a></span>
-<span id="cb2-7"><a href=""></a>con <span class="ot">&lt;-</span> <span class="fu">redcapConnection</span>(<span class="at">url =</span> url, </span>
-<span id="cb2-8"><a href=""></a>                        <span class="at">token =</span> token) </span>
-<span id="cb2-9"><a href=""></a></span>
-<span id="cb2-10"><a href=""></a><span class="co"># send data into REDCap ----</span></span>
-<span id="cb2-11"><a href=""></a><span class="fu">importRecords</span>(con,</span>
-<span id="cb2-12"><a href=""></a>              <span class="at">data =</span> ed_data,</span>
-<span id="cb2-13"><a href=""></a>              <span class="at">overwriteBehavior =</span> <span class="st">"normal"</span>,</span>
-<span id="cb2-14"><a href=""></a>              <span class="at">returnContent =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href=""></a>con <span class="ot">&lt;-</span> <span class="fu">redcapConnection</span>(<span class="at">url =</span> url, </span>
+<span id="cb2-7"><a href=""></a>                        <span class="at">token =</span> token) </span>
+<span id="cb2-8"><a href=""></a></span>
+<span id="cb2-9"><a href=""></a><span class="co"># send data into REDCap ----</span></span>
+<span id="cb2-10"><a href=""></a><span class="fu">importRecords</span>(con,</span>
+<span id="cb2-11"><a href=""></a>              <span class="at">data =</span> ed_data,</span>
+<span id="cb2-12"><a href=""></a>              <span class="at">overwriteBehavior =</span> <span class="st">"normal"</span>,</span>
+<span id="cb2-13"><a href=""></a>              <span class="at">returnContent =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p><strong><code>url</code></strong>: you can find this in the sample code in the <em>API Playground</em> application in REDCap</p>
@@ -579,47 +610,88 @@
 </section>
 <section id="getting-data-out-of-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>2. Getting data out of REDCap</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1|3-7|9-10|12-14|16-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(redcapAPI)</span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="co"># set up connection ----</span></span>
+<span id="cb3-4"><a href=""></a>url <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb3-5"><a href=""></a>token <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb3-6"><a href=""></a>con <span class="ot">&lt;-</span> <span class="fu">redcapConnection</span>(<span class="at">url =</span> url, </span>
+<span id="cb3-7"><a href=""></a>                        <span class="at">token =</span> token) </span>
+<span id="cb3-8"><a href=""></a></span>
+<span id="cb3-9"><a href=""></a><span class="co"># get all fields for all records ----</span></span>
+<span id="cb3-10"><a href=""></a>ed_census <span class="ot">&lt;-</span> <span class="fu">exportRecordsTyped</span>(con)</span>
+<span id="cb3-11"><a href=""></a></span>
+<span id="cb3-12"><a href=""></a><span class="co"># get all fields from a certain form ----</span></span>
+<span id="cb3-13"><a href=""></a>ed_census_form <span class="ot">&lt;-</span> <span class="fu">exportRecordsTyped</span>(<span class="at">rcon =</span> con,</span>
+<span id="cb3-14"><a href=""></a>                                     <span class="at">forms =</span> <span class="st">"dsat"</span>)</span>
+<span id="cb3-15"><a href=""></a></span>
+<span id="cb3-16"><a href=""></a><span class="co"># get only certain fields ----</span></span>
+<span id="cb3-17"><a href=""></a>ed_census_fields <span class="ot">&lt;-</span> <span class="fu">exportRecordsTyped</span>(<span class="at">rcon =</span> con,</span>
+<span id="cb3-18"><a href=""></a>                                       <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">"record_id"</span>, <span class="st">"date"</span>, <span class="st">"edvol_tot"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="r-workflow" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>R workflow</h2>
-<p>This whole workflow runs from a single R script. The R script:</p>
-<ul>
-<li class="fragment">fetches the data from ReddiNet with an API</li>
-<li class="fragment">creates a PDF report using R Markdown</li>
-<li class="fragment">emails our inbox the PDF report and a summary of the processed data</li>
-<li class="fragment">imports the data into REDCap with a different API</li>
-</ul>
-</section>
-<section id="code" class="slide level2 section-header" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>Code</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co">#| echo: true</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">library</span>(redcapAPI)</span>
-<span id="cb3-3"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>testing out notes</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="storing-data-in-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Storing data in REDCap</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/redcap-data-storage.png" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
 </section>
 <section id="r-markdown" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>3. R Markdown</h2>
-</section>
-<section id="r-markdown-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>3. R Markdown</h2>
 <ul>
 <li class="fragment">R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)</li>
 <li class="fragment">You can render a Markdown or Quarto file from another script and specify where you want the file to be saved</li>
 </ul>
+<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|3-18|20-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1-3|5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>today <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">Sys.Date</span>(), <span class="st">"-"</span>, <span class="st">"_"</span>)</span>
+<span id="cb4-2"><a href=""></a>output_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"A:/path/ed_census_"</span>, today, <span class="st">".pdf"</span>)</span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="at">input =</span> <span class="st">"A:/source-path/ed_census_markdown_pdf.Rmd"</span>,</span>
+<span id="cb4-5"><a href=""></a>                  <span class="at">output_file =</span> output_file) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>Note - you render Quarto docs with <code>quarto_render()</code></p>
+</div>
+</section>
+<section id="r-markdown-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>3. R Markdown</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|1|3-5|7-14|15-21|22-33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"  ED Census"</span> <span class="ot">=</span> <span class="st">"blue"</span>, </span>
+<span id="cb5-4"><a href=""></a>            <span class="st">" Normal Range Limits"</span> <span class="ot">=</span> <span class="st">"yellow"</span>, </span>
+<span id="cb5-5"><a href=""></a>            <span class="st">"Danger Zone Limits"</span> <span class="ot">=</span> <span class="st">"red"</span>)</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>edvol <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date)) <span class="sc">+</span> </span>
+<span id="cb5-9"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> high_thresh3, <span class="at">color =</span> <span class="st">"Danger Zone Limits"</span>), <span class="at">size =</span> line_width) <span class="sc">+</span></span>
+<span id="cb5-10"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> high_thresh2, <span class="at">color =</span> <span class="st">" Normal Range Limits"</span>), <span class="at">size =</span> line_width) <span class="sc">+</span></span>
+<span id="cb5-11"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> edvol_tot, <span class="at">color =</span> <span class="st">"  ED Census"</span>), <span class="at">size =</span> line_width) <span class="sc">+</span></span>
+<span id="cb5-12"><a href=""></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> edvol_tot), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb5-13"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> low_thresh2, <span class="at">color =</span> <span class="st">" Normal Range Limits"</span>), <span class="at">size =</span> line_width) <span class="sc">+</span></span>
+<span id="cb5-14"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> low_thresh3, <span class="at">color =</span> <span class="st">"Danger Zone Limits"</span>), <span class="at">size =</span> line_width) <span class="sc">+</span> </span>
+<span id="cb5-15"><a href=""></a>  <span class="fu">ggtitle</span>(<span class="st">"ED Census"</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href=""></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb5-17"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"Daily Census"</span>) <span class="sc">+</span> </span>
+<span id="cb5-18"><a href=""></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(subtitle_dates, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"San Mateo County Faciities Only"</span>),</span>
+<span id="cb5-19"><a href=""></a>       <span class="at">colour =</span> <span class="st">""</span>,</span>
+<span id="cb5-20"><a href=""></a>       <span class="at">caption =</span> <span class="st">"    The limits of the normal range are determined by adding and subtracting twice the standard deviation from the average ED count for each month. </span></span>
+<span id="cb5-21"><a href=""></a><span class="st">          The limits of the 'Danger Zone' are determined by adding and subtracting three times the standard deviation from the average ED count for each month."</span>) <span class="sc">+</span></span>
+<span id="cb5-22"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-23"><a href=""></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">9</span>),</span>
+<span id="cb5-24"><a href=""></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb5-25"><a href=""></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">6</span>),</span>
+<span id="cb5-26"><a href=""></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb5-27"><a href=""></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb5-28"><a href=""></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb5-29"><a href=""></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb5-30"><a href=""></a>        <span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span> </span>
+<span id="cb5-31"><a href=""></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-markdown-2" class="slide level2 nostretch" data-background-image="images/blank-slide.png" data-background-size="contain">
@@ -644,31 +716,31 @@
 <section id="automated-email-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>4. Automated email</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|3-18|20-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(sendmailR)</span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a><span class="co"># inputs ----</span></span>
-<span id="cb5-4"><a href=""></a>body <span class="ot">&lt;-</span> <span class="st">"text here"</span></span>
-<span id="cb5-5"><a href=""></a>final_file <span class="ot">&lt;-</span> output_file</span>
-<span id="cb5-6"><a href=""></a>attach_name <span class="ot">&lt;-</span> <span class="st">"text here"</span></span>
-<span id="cb5-7"><a href=""></a>  </span>
-<span id="cb5-8"><a href=""></a>weekday <span class="ot">&lt;-</span> <span class="fu">as.character</span>(lubridate<span class="sc">::</span><span class="fu">wday</span>(<span class="fu">Sys.Date</span>()<span class="sc">-</span><span class="dv">1</span>, <span class="at">label =</span> T, <span class="at">abbr =</span> F))</span>
-<span id="cb5-9"><a href=""></a>date <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()<span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb5-10"><a href=""></a>subject <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"ED Census Update for "</span>, weekday, <span class="st">" "</span>, date)</span>
-<span id="cb5-11"><a href=""></a>  </span>
-<span id="cb5-12"><a href=""></a>attach_obj <span class="ot">&lt;-</span> <span class="fu">mime_part</span>(<span class="at">x =</span> final_file,</span>
-<span id="cb5-13"><a href=""></a>                        <span class="at">name =</span> attach_name)</span>
-<span id="cb5-14"><a href=""></a>body_with_attach <span class="ot">&lt;-</span> <span class="fu">list</span>(body, </span>
-<span id="cb5-15"><a href=""></a>                         attach_obj)</span>
-<span id="cb5-16"><a href=""></a>  </span>
-<span id="cb5-17"><a href=""></a>from <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"email@email.com"</span>)</span>
-<span id="cb5-18"><a href=""></a>to <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">c</span>(<span class="st">"email@email.com"</span>))</span>
-<span id="cb5-19"><a href=""></a></span>
-<span id="cb5-20"><a href=""></a><span class="co"># send email ----</span></span>
-<span id="cb5-21"><a href=""></a><span class="fu">sendmail</span>(<span class="at">from =</span> from,</span>
-<span id="cb5-22"><a href=""></a>         <span class="at">to =</span> to,</span>
-<span id="cb5-23"><a href=""></a>         <span class="at">subject =</span> subject,</span>
-<span id="cb5-24"><a href=""></a>         <span class="at">msg =</span> body_with_attach,</span>
-<span id="cb5-25"><a href=""></a>         <span class="at">control =</span> <span class="fu">list</span>(<span class="at">smtpServe =</span> <span class="st">"server"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|3-18|20-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(sendmailR)</span>
+<span id="cb6-2"><a href=""></a></span>
+<span id="cb6-3"><a href=""></a><span class="co"># inputs ----</span></span>
+<span id="cb6-4"><a href=""></a>body <span class="ot">&lt;-</span> <span class="st">"text here"</span></span>
+<span id="cb6-5"><a href=""></a>final_file <span class="ot">&lt;-</span> output_file</span>
+<span id="cb6-6"><a href=""></a>attach_name <span class="ot">&lt;-</span> <span class="st">"text here"</span></span>
+<span id="cb6-7"><a href=""></a>  </span>
+<span id="cb6-8"><a href=""></a>weekday <span class="ot">&lt;-</span> <span class="fu">as.character</span>(lubridate<span class="sc">::</span><span class="fu">wday</span>(<span class="fu">Sys.Date</span>()<span class="sc">-</span><span class="dv">1</span>, <span class="at">label =</span> T, <span class="at">abbr =</span> F))</span>
+<span id="cb6-9"><a href=""></a>date <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb6-10"><a href=""></a>subject <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"ED Census Update for "</span>, weekday, <span class="st">" "</span>, date)</span>
+<span id="cb6-11"><a href=""></a>  </span>
+<span id="cb6-12"><a href=""></a>attach_obj <span class="ot">&lt;-</span> <span class="fu">mime_part</span>(<span class="at">x =</span> final_file,</span>
+<span id="cb6-13"><a href=""></a>                        <span class="at">name =</span> attach_name)</span>
+<span id="cb6-14"><a href=""></a>body_with_attach <span class="ot">&lt;-</span> <span class="fu">list</span>(body, </span>
+<span id="cb6-15"><a href=""></a>                         attach_obj)</span>
+<span id="cb6-16"><a href=""></a>  </span>
+<span id="cb6-17"><a href=""></a>from <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"email@email.com"</span>)</span>
+<span id="cb6-18"><a href=""></a>to <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="fu">c</span>(<span class="st">"email@email.com"</span>))</span>
+<span id="cb6-19"><a href=""></a></span>
+<span id="cb6-20"><a href=""></a><span class="co"># send email ----</span></span>
+<span id="cb6-21"><a href=""></a><span class="fu">sendmail</span>(<span class="at">from =</span> from,</span>
+<span id="cb6-22"><a href=""></a>         <span class="at">to =</span> to,</span>
+<span id="cb6-23"><a href=""></a>         <span class="at">subject =</span> subject,</span>
+<span id="cb6-24"><a href=""></a>         <span class="at">msg =</span> body_with_attach,</span>
+<span id="cb6-25"><a href=""></a>         <span class="at">control =</span> <span class="fu">list</span>(<span class="at">smtpServe =</span> <span class="st">"server"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="automated-email-2" class="slide level2 nostretch" data-background-image="images/blank-slide.png" data-background-size="contain">
@@ -678,6 +750,49 @@
 <p><img data-src="images/automated-email-example.png" class="nostretch quarto-figure quarto-figure-center" width="800"></p>
 </figure>
 </div>
+</section>
+<section id="back-up-manual-entry" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>5. Back-up: manual entry</h2>
+<ul>
+<li class="fragment">If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap<br>
+</li>
+<li class="fragment">This is a huge pro of storing the data in REDCap instead of in an Excel or database without a front end</li>
+</ul>
+</section></section>
+<section>
+<section id="lessons-learned" class="title-slide slide level1 center">
+<h1>Lessons learned</h1>
+
+</section>
+<section id="lessons-learned-1" class="slide level2 section-header">
+<h2>Lessons learned</h2>
+<p><img data-src="images/section-lessons-learned.jpg" class="absolute" style="top: 0px; left: 0px; right: 0,; width: 1690px; "></p>
+</section>
+<section id="lessons-learned-2" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Lessons learned</h2>
+<ul>
+<li class="fragment">When choosing workflows to automate, it’s best to choose a mature workflow with defined business rules<br>
+</li>
+<li class="fragment">Depending on your workflow, you might want to save a copy of the data you pull for record keeping<br>
+</li>
+<li class="fragment">If you send an email, include explanations of the workflow to foster trust among end-users</li>
+</ul>
+</section></section>
+<section id="questions" class="title-slide slide level1 center" data-background-image="images/section-workflow-details.jpg" data-background-position="top" data-background-size="1690px">
+<h1>Questions?</h1>
+<p><img data-src="images/section-questions.jpg" class="absolute" style="top: 0px; left: 0px; right: 0,; width: 1690px; "></p>
+</section>
+
+<section>
+<section id="additional-resources" class="title-slide slide level1 center" data-background-image="images/section-additional-resources.jpg" data-background-position="top" data-background-size="1690px">
+<h1>Additional resources</h1>
+
+</section>
+<section id="windows-task-scheduler" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Windows task scheduler</h2>
+</section>
+<section id="r-markdownquarto" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>R Markdown/Quarto</h2>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 

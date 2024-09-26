@@ -22,79 +22,100 @@ execute:
 
 ## Agenda {background-image="images/blank-slide.png" background-size="contain"}
 
-* Workflow overview
-* Workflow details
-* Lessons learned
-* Questions
-* Additional resources
+-   Workflow overview
+-   Workflow details
+-   Lessons learned
+-   Questions
+-   Additional resources
 
-# Workflow overview
-
-## Workflow overview {.section-header}
-
-![](images/section-workflow-overview.jpg){.absolute top=0 left=0 right=0, width=1690}
+# Workflow overview {background-image="images/section-workflow-overview.jpg" background-position="top" background-size="1690px"}
 
 ## Motivation {background-image="images/blank-slide.png" background-size="contain"}
 
 Each day, we report the ED Census for each of our six hospitals and the census overall. The report includes:
 
-* Census values
-* An indication if the values are higher than expected
-* A PDF report with a trend of the last 30 days of values for context
+-   Census values
+-   An indication if the values are higher than expected
+-   A PDF report with a trend of the last 30 days of values for context
 
 ## Initial workflow {background-image="images/blank-slide.png" background-size="contain"}
 
-![](images/initial-workflow-reddinet-login.png){.absolute top=266.4 left=54.5 width=410.4 height=361.2}
+::: {.fragment}
+![](images/initial-workflow-reddinet-login.png){.absolute top=300 left=50 width=350}
+:::
 
-![](images/initial-workflow-reddinet-export.png){.absolute top=329.8 left=415.8 width=609.1 height=247.2}
+::: {.fragment}
+![](images/initial-workflow-reddinet-export.png){.absolute top=350 left=400 width=560}
+:::
 
-![](images/initial-workflow-ed-census-excel.png){.absolute top=612 left=442.4 width=755 height=290}
+::: {.fragment}
+![](images/initial-workflow-ed-census-excel.png){.absolute top=620 left=300 width=750}
+:::
 
-![](images/initial-workflow-ed-census-chart.png){.absolute top=335.5 left=1106.6 width="642.2" height="524.8"}
+::: {.fragment}
+![](images/initial-workflow-ed-census-chart.png){.absolute top=300 left=1050 width="600"}
+:::
 
 ## Workflow with REDCap {background-image="images/blank-slide.png" background-size="contain"}
 
-# Workflow details
+# Workflow details {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
 
-## Workflow details {}
+![](images/section-workflow-details.jpg){.absolute top="0" left="0" right="0"}
 
-![](images/section-workflow-details.jpg){.absolute top=0 left=0 right=0}
 ## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
 
-**REDCap**  
-* Gives us a stable place to store our data  
-* Allows us to create new records for new data, instead of overwriting an excel file each day   
-**R**
-* R processes, moves and formats the data in and out of REDCap   
-**Windows Task Scheduler**  
-* Allows the process to be fully automated and run without user intervention  
-**Application Programming Interfaces (API)**  
-* A method of sending and receiving data  
-* Can run APIs in and out of REDCap and other systems  
+::: fragment
+REDCap
+
+-   Gives us a stable place to store our data\
+-   Allows us to create new records for new data, instead of overwriting an excel file each day\
+:::
+
+::: fragment
+R
+
+-   A statistical programming language that is also used for data management and data science
+-   R processes, moves and formats the data in and out of REDCap\
+:::
+
+## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
+
+::: fragment
+Windows Task Scheduler
+
+-   Default application on Windows for running tasks automatically
+-   Allows the process to be fully automated and run without user intervention
+:::
+
+::: fragment
+Application Programming Interfaces (API)
+
+-   A method of sending and receiving data\
+-   Can run APIs in and out of REDCap and other systems\
+:::
 
 ## Workflow steps {background-image="images/blank-slide.png" background-size="contain"}
 
-This whole workflow runs from a single R script. The R script has four main components:  
+This whole workflow runs from a single R script. The R script has four main components:
 
-1. Fetch data: retrieve and process source data  
-2. REDCap APIs: send data in and out of REDCap  
-3. R Markdown: format data into a PDF report  
-4. Automated email: package everything together for the end-user   
-5. (optional): manual data entry  
+1.  Fetch data: retrieve and process source data\
+2.  REDCap APIs: send data in and out of REDCap\
+3.  R Markdown: format data into a PDF report\
+4.  Automated email: package everything together for the end-user\
+5.  (optional): manual data entry
 
 ## 1. Fetch data {background-image="images/blank-slide.png" background-size="contain"}
 
-* First we need to get source data into REDCap  
-* Ideally this should be automated, meaning no human interference or manual downloading  
-* Best options:  
-    * **API (application programming interface) – this is what we use for this workflow**  
-    * ODBC connection to a cloud database  
-    * sFTP (secure file transfer protocol)  
-    
-::: notes
-The main gist is that you want to use automated methods to access your data wherever possible. This not only allows you to schedule scripts, but it also ensures data are pulled using the same rules/processes each time. 
-:::
+-   First we need to get source data into REDCap\
+-   Ideally this should be automated, meaning no human interference or manual downloading\
+-   Best options:
+    -   **API (application programming interface) – this is what we use for this workflow**\
+    -   ODBC connection to a cloud database\
+    -   sFTP (secure file transfer protocol)
 
+::: notes
+The main gist is that you want to use automated methods to access your data wherever possible. This not only allows you to schedule scripts, but it also ensures data are pulled using the same rules/processes each time.
+:::
 
 ## 1. Fetch data {.section-header background-image="images/blank-slide.png" background-size="contain"}
 
@@ -138,31 +159,31 @@ importRecords(redcap_con,
 
 ## 2. REDCap APIs {background-image="images/blank-slide.png" background-size="contain"}
 
-<< insert images here >>
+\<\< insert images here \>\>
 
 ## 2. REDCap APIs in R {background-image="images/blank-slide.png" background-size="contain"}
 
 There are several different R packages you can use to get data from REDCap into R with an API
 
-* [httr](https://httr.r-lib.org/): this is what is used in the API playground in REDCap  
-* [redcapAPI](https://github.com/vubiostat/redcapAPI): this is what we typically use
-* [REDCapR](https://ouhscbbmc.github.io/REDCapR/): we’ve used this in the past when we couldn’t get what we needed from REDCapAPI
+-   [httr](https://httr.r-lib.org/): this is what is used in the API playground in REDCap\
+-   [redcapAPI](https://github.com/vubiostat/redcapAPI): this is what we typically use
+-   [REDCapR](https://ouhscbbmc.github.io/REDCapR/): we’ve used this in the past when we couldn’t get what we needed from REDCapAPI
 
+::: fragment
 For a comparison of different packages, see [here](https://github.com/vubiostat/redcapAPI) (note: this might be biased as it was written by the `REDCapAPI` package developers)
+:::
 
 ## 2. Sending data into REDCap {background-image="images/blank-slide.png" background-size="contain"}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
 ```{r}
-#| code-line-numbers: "|3-18|20-25"
+#| code-line-numbers: "|1|3-7|9-13"
 library(redcapAPI)
 
 # set up connection ----
 url <- ""
 token <- ""
-
 con <- redcapConnection(url = url, 
                         token = token) 
 
@@ -176,69 +197,110 @@ importRecords(con,
 :::
 
 ::: {.column width="40%"}
+**`url`**: you can find this in the sample code in the *API Playground* application in REDCap
 
+**`token`**: you generate this from the *API* application in REDCap
+:::
 :::
 
-::::
 ## 2. Getting data out of REDCap {background-image="images/blank-slide.png" background-size="contain"}
 
-
-## R workflow {background-image="images/blank-slide.png" background-size="contain"}
-
-This whole workflow runs from a single R script. The R script:
-
-* fetches the data from ReddiNet with an API
-* creates a PDF report using R Markdown
-* emails our inbox the PDF report and a summary of the processed data
-* imports the data into REDCap with a different API
-
-
-
-## Code {.section-header background-image="images/blank-slide.png" background-size="contain"}
-
-```r
-#| echo: true
+```{r}
+#| code-line-numbers: "|1|3-7|9-10|12-14|16-18"
 library(redcapAPI)
 
+# set up connection ----
+url <- ""
+token <- ""
+con <- redcapConnection(url = url, 
+                        token = token) 
+
+# get all fields for all records ----
+ed_census <- exportRecordsTyped(con)
+
+# get all fields from a certain form ----
+ed_census_form <- exportRecordsTyped(rcon = con,
+                                     forms = "dsat")
+
+# get only certain fields ----
+ed_census_fields <- exportRecordsTyped(rcon = con,
+                                       fields = c("record_id", "date", "edvol_tot"))
 
 ```
 
-::: notes
-testing out notes
+## Storing data in REDCap {background-image="images/blank-slide.png" background-size="contain"}
+
+![](images/redcap-data-storage.png){.nostretch fig-align="center" width="800px"}
+
+## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
+
+-   R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)
+-   You can render a Markdown or Quarto file from another script and specify where you want the file to be saved
+
+::: fragment
+```{r}
+#| code-line-numbers: "|1-3|5-6"
+today <- str_replace_all(Sys.Date(), "-", "_")
+output_file <- paste0("A:/path/ed_census_", today, ".pdf")
+
+rmarkdown::render(input = "A:/source-path/ed_census_markdown_pdf.Rmd",
+                  output_file = output_file) 
+```
 :::
 
-
-## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
-```{r}
-#| code-line-numbers: "|3-18|20-25"
-
-```
+::: fragment
+Note - you render Quarto docs with `quarto_render()`
+:::
 
 ## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
 
-* R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)
-* You can render a Markdown or Quarto file from another script and specify where you want the file to be saved
-
 ```{r}
-#| code-line-numbers: "|3-18|20-25"
+#| code-line-numbers: "|1|3-5|7-14|15-21|22-33"
+library(ggplot2)
 
-2+2 
+colors <- c("  ED Census" = "blue", 
+            " Normal Range Limits" = "yellow", 
+            "Danger Zone Limits" = "red")
 
+edvol %>%
+  ggplot(aes(x = date)) + 
+  geom_line(aes(y = high_thresh3, color = "Danger Zone Limits"), size = line_width) +
+  geom_line(aes(y = high_thresh2, color = " Normal Range Limits"), size = line_width) +
+  geom_line(aes(y = edvol_tot, color = "  ED Census"), size = line_width) +
+  geom_point(aes(y = edvol_tot), color = "blue", size = 1, shape = 15) + 
+  geom_line(aes(y = low_thresh2, color = " Normal Range Limits"), size = line_width) +
+  geom_line(aes(y = low_thresh3, color = "Danger Zone Limits"), size = line_width) + 
+  ggtitle("ED Census") +
+  xlab("Date") + 
+  ylab("Daily Census") + 
+  labs(subtitle = paste0(subtitle_dates, "\n", "San Mateo County Faciities Only"),
+       colour = "",
+       caption = "    The limits of the normal range are determined by adding and subtracting twice the standard deviation from the average ED count for each month. 
+          The limits of the 'Danger Zone' are determined by adding and subtracting three times the standard deviation from the average ED count for each month.") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 9),
+        plot.subtitle = element_text(hjust = 0.5, size = 8),
+        plot.caption = element_text(hjust = 0.5, size = 6),
+        axis.title = element_text(face = "bold", size = 8),
+        axis.text.x = element_text(size = 7),
+        axis.text.y = element_text(size = 7),
+        legend.text = element_text(size = 7),
+        legend.position = "top") + 
+  scale_color_manual(values = colors)
 ```
 
-
-## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain" .nostretch}
+## 3. R Markdown {.nostretch background-image="images/blank-slide.png" background-size="contain"}
 
 ![](images/ed-census-chart-markdown.png){.nostretch fig-align="center" width="800px"}
 
 ## 4. Automated email {background-image="images/blank-slide.png" background-size="contain"}
 
- * To make things as easy as possible for the end user, the last step of the R script sends an email with all the information and attaches the PDF rendered in step 3
+-   To make things as easy as possible for the end user, the last step of the R script sends an email with all the information and attaches the PDF rendered in step 3
 
- * R has a couple packages for sending emails:
+-   R has a couple packages for sending emails:
 
-   * [sendmailR](https://github.com/olafmersmann/sendmailR): for plain text emails
-   * [blastula](https://github.com/rstudio/blastula): for rich text emails  
+    -   [sendmailR](https://github.com/olafmersmann/sendmailR): for plain text emails
+    -   [blastula](https://github.com/rstudio/blastula): for rich text emails
 
 ## 4. Automated email {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -271,6 +333,33 @@ sendmail(from = from,
          control = list(smtpServe = "server"))
 ```
 
-## 4. Automated email {background-image="images/blank-slide.png" background-size="contain" .nostretch}
+## 4. Automated email {.nostretch background-image="images/blank-slide.png" background-size="contain"}
 
 ![](images/automated-email-example.png){.nostretch fig-align="center" width="800px"}
+
+## 5. Back-up: manual entry {background-image="images/blank-slide.png" background-size="contain"}
+
+-   If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap\
+-   This is a huge pro of storing the data in REDCap instead of in an Excel or database without a front end
+
+# Lessons learned
+
+## Lessons learned {.section-header}
+
+![](images/section-lessons-learned.jpg){.absolute top="0" left="0" right="0," width="1690"}
+
+## Lessons learned {background-image="images/blank-slide.png" background-size="contain"}
+
+-   When choosing workflows to automate, it’s best to choose a mature workflow with defined business rules\
+-   Depending on your workflow, you might want to save a copy of the data you pull for record keeping\
+-   If you send an email, include explanations of the workflow to foster trust among end-users
+
+# Questions? {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
+
+![](images/section-questions.jpg){.absolute top="0" left="0" right="0," width="1690"}
+
+# Additional resources {background-image="images/section-additional-resources.jpg" background-position="top" background-size="1690px"}
+
+## Windows task scheduler {background-image="images/blank-slide.png" background-size="contain"}
+
+## R Markdown/Quarto {background-image="images/blank-slide.png" background-size="contain"}
