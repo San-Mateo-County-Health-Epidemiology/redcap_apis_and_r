@@ -90,30 +90,34 @@ This whole workflow runs from a single R script. The R script has four main comp
     * **API (application programming interface) – this is what we use for this workflow**  
     * ODBC connection to a cloud database  
     * sFTP (secure file transfer protocol)  
+    
+::: notes
+The main gist is that you want to use automated methods to access your data wherever possible. This not only allows you to schedule scripts, but it also ensures data are pulled using the same rules/processes each time. 
+:::
+
 
 ## 1. Fetch data {.section-header background-image="images/blank-slide.png" background-size="contain"}
 
-```r
-#| echo: true
-
+```{r}
+#| code-line-numbers: "|1-4|6-9|11-29|31-34"
 library(tidyverse)
 library(redcapAPI)
 library(httr) 
+library(jsonlite)
 
-## fetch and import new data into REDCap ----
+# fetch ED census data from source ----
 api_response <- GET(url = url,
                     add_headers(Authorization = key),
                     encode = "json")
 
-### convert to flat file + do basic cleaning ----
+# convert from json to 2x2 and do basic cleaning ----
 edvol_today <- jsonlite::fromJSON(rawToChar(api_response$content)) %>%
   jsonlite::flatten() %>%
-  filter(name %in% hosp_names) %>%
   select(name, matches("edvol")) %>%
   rename(edvol = edVolume.value,
          edvol_update = edVolume.updateTime) %>%
-  mutate(edvol = case_when(as.Date(edvol_update) == Sys.Date() ~ edvol,
-                           TRUE ~ NA_integer_, 
+  mutate(record_id = as.numeric(Sys.Date() - as.Date("2023-01-01")),
+         edvol = case_when(as.Date(edvol_update) == Sys.Date() ~ edvol,
                            as.Date(edvol_update) < Sys.Date() ~ NA_integer_),
          edvol_update = case_when(!is.na(edvol) ~ edvol_update, 
                                   TRUE ~ NA_character_),
@@ -124,17 +128,60 @@ edvol_today <- jsonlite::fromJSON(rawToChar(api_response$content)) %>%
   mutate(new_var = paste0(var, "_", name_new)) %>%
   select(-c(name_new, var)) %>%
   pivot_wider(names_from = new_var, values_from = val) %>%
-  select(record_id, date, everything()) %>%
-  select_if(!is.na(.))
+  select(record_id, date, everything()) 
 
-### send into REDCap ----
-import_data <- importRecords(redcap_con,
-                             data = edvol_today,
-                             overwriteBehavior = "normal",
-                             returnContent = "count",
-                             returnData = F)
+# send into REDCap ----
+importRecords(redcap_con,
+              data = edvol_today,
+              overwriteBehavior = "normal")
+```
+
+## 2. REDCap APIs {background-image="images/blank-slide.png" background-size="contain"}
+
+<< insert images here >>
+
+## 2. REDCap APIs in R {background-image="images/blank-slide.png" background-size="contain"}
+
+There are several different R packages you can use to get data from REDCap into R with an API
+
+* [httr](https://httr.r-lib.org/): this is what is used in the API playground in REDCap  
+* [redcapAPI](https://github.com/vubiostat/redcapAPI): this is what we typically use
+* [REDCapR](https://ouhscbbmc.github.io/REDCapR/): we’ve used this in the past when we couldn’t get what we needed from REDCapAPI
+
+For a comparison of different packages, see [here](https://github.com/vubiostat/redcapAPI) (note: this might be biased as it was written by the `REDCapAPI` package developers)
+
+## 2. Sending data into REDCap {background-image="images/blank-slide.png" background-size="contain"}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "|3-18|20-25"
+library(redcapAPI)
+
+# set up connection ----
+url <- ""
+token <- ""
+
+con <- redcapConnection(url = url, 
+                        token = token) 
+
+# send data into REDCap ----
+importRecords(con,
+              data = ed_data,
+              overwriteBehavior = "normal",
+              returnContent = "count")
 
 ```
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+## 2. Getting data out of REDCap {background-image="images/blank-slide.png" background-size="contain"}
+
 
 ## R workflow {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -146,23 +193,6 @@ This whole workflow runs from a single R script. The R script:
 * imports the data into REDCap with a different API
 
 
-##  {background-image="images/redcap-apis_sidebar.png" background-size="contain"}
-
-::: notes
-testing out notes
-:::
-
-## {background-image="images/redcap-apis_api.png" background-size="contain"}
-
-::: notes
-testing out notes
-:::
-
-## {.section-header background-image="images/redcap-apis_api-playground.png" background-size="contain"}
-
-::: notes
-testing out notes
-:::
 
 ## Code {.section-header background-image="images/blank-slide.png" background-size="contain"}
 
