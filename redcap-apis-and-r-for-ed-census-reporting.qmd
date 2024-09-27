@@ -383,7 +383,7 @@ sendmail(from = from,
 -   Depending on your workflow, you might want to save a copy of the data you pull for record keeping\
 -   If you send an email, include explanations of the workflow to foster trust among end-users
 
-# Any questions {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
+# Questions {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
 
 # Additional resources {background-image="images/section-additional-resources.jpg" background-position="top" background-size="1690px"}
 

@@ -14,9 +14,7 @@ $code-color: $blue;
 $font-family-sans-serif: 'Arial', sans-serif;
 
 .side-menu-button, .progress {
-  
   color: $blue;
-  
 }
 
 ul.slide-menu-item, li.slide-menu-item, li.slide-menu-item-vertical, ul.slide-menu-item-vertical ul.toolbar-panel-button, li.toolbar-panel-button {
@@ -45,18 +43,28 @@ a.fragment {
   h1 {
     text-align: left;
     line-height: 100px;
-    
+    font-size: 7rem;
   }
   
+  .quarto-title-author-name {
+    
+    text-align: left;
+    position: absolute;
+    top: 650px;
+    left: 10px;
+    color: $black;
+    font-size: 4rem;
+      
+  }
   
 }
 
 #workflow-overview h1{
 
       text-align: left;
-      position:fixed;
-      left:5px;
-      bottom:5px;
+      position: fixed;
+      left: 5px;
+      bottom: 5px;
       color: $black;
       font-size: 6rem;
 
@@ -84,16 +92,16 @@ a.fragment {
   
 }
 
-#any-questions h1{
+#questions h1{
   
   text-align: left;
-  position:fixed;
-  left:5px;
-  bottom:5px;
+  position: relative;
+  top: 750px;
   color: $black;
   font-size: 6rem;
   
 }
+
 
 #additional-resources h1{
   
