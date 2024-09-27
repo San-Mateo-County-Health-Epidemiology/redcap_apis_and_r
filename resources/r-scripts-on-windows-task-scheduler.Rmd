@@ -56,7 +56,7 @@ Before scheduling a script to be run, you need to check a couple things:
     * ex: `-e "source('\\root\sub-folder\file.R')"`
     * note: the path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. A single extra space will mean the script isn't found and isn't run. 
     
-![](images\\resources_wts-edit-action.png){width="30%"} 
+![](images\\resources_wts-edit-action.png){width="10%"} 
     
 
 ## Keep in mind
