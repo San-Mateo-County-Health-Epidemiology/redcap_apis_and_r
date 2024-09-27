@@ -1,11 +1,8 @@
 ####################################################
 #
-# Download ED Census Data, Make ED Census Report + Send Email with info 
+# Automatically download, store + process data using R and REDCap
 #
 ###################################################
-
-# set up ------------------------------------------
-setwd("")
 
 library(stringr)
 library(tinytex)
@@ -15,21 +12,20 @@ library(redcapAPI)
 library(sendmailR)
 library(httr)
 
-# set-up -------------------------------------------
-## fetch and import new data into REDCap ----
+# process source data ------------------------------
+## fetch source data with an API ----
 api_response <- GET(url = url,
                     add_headers(Authorization = key),
                     encode = "json")
 
-### convert to flat file + do basic cleaning ----
+# convert from json to 2x2 and do basic cleaning ----
 edvol_today <- jsonlite::fromJSON(rawToChar(api_response$content)) %>%
   jsonlite::flatten() %>%
-  filter(name %in% hosp_names) %>%
   select(name, matches("edvol")) %>%
   rename(edvol = edVolume.value,
          edvol_update = edVolume.updateTime) %>%
-  mutate(edvol = case_when(as.Date(edvol_update) == Sys.Date() ~ edvol,
-                           TRUE ~ NA_integer_, 
+  mutate(record_id = as.numeric(Sys.Date() - as.Date("2023-01-01")),
+         edvol = case_when(as.Date(edvol_update) == Sys.Date() ~ edvol,
                            as.Date(edvol_update) < Sys.Date() ~ NA_integer_),
          edvol_update = case_when(!is.na(edvol) ~ edvol_update, 
                                   TRUE ~ NA_character_),
@@ -40,48 +36,42 @@ edvol_today <- jsonlite::fromJSON(rawToChar(api_response$content)) %>%
   mutate(new_var = paste0(var, "_", name_new)) %>%
   select(-c(name_new, var)) %>%
   pivot_wider(names_from = new_var, values_from = val) %>%
-  select(record_id, date, everything()) %>%
-  select_if(!is.na(.))
+  select(record_id, date, everything()) 
 
-### send into REDCap ----
-import_data <- importRecords(redcap_con,
-                             data = edvol_today,
-                             overwriteBehavior = "normal",
-                             returnContent = "count",
-                             returnData = F)
+# send into REDCap ----
+importRecords(redcap_con,
+              data = edvol_today,
+              overwriteBehavior = "normal")
+
 
 # make ED Census PDF -------------------------------
 today <- str_replace_all(Sys.Date(), "-", "_")
-output_file <- paste0("A:/path/ed_census_", today, ".pdf")
+output_file <- paste0("A:/path/ed_census_", today, ".pdf") # this is where the path where you want the rendered file to live goes
 
-rmarkdown::render(input = "A:/source-path/ed_census_markdown_pdf.Rmd",
-                  output_file = output_file)
+rmarkdown::render(input = "A:/source-path/ed_census_markdown_pdf.Rmd", # this is the path of the .RMD file you want to render
+                  output_file = output_file) 
 
 # send email --------------------------------------
-## connect to REDCap ----
-ed_census <- exportRecordsTyped(redcap_con)
+# inputs ----
+body <- "text here"
+final_file <- output_file
+attach_name <- "text here"
 
-## wrangle todays data into a string for the email ----
-body <- ed_census
-
-## compose and send email ----
 weekday <- as.character(lubridate::wday(Sys.Date()-1, label = T, abbr = F))
 date <- Sys.Date()-1
-  
 subject <- paste0("ED Census Update for ", weekday, " ", date)
-  
-attachmentPath <- final_file
-attachmentObject <- mime_part(x = attachmentPath,
-                              name = attachmentName)
-bodyWithAttachment <- list(body, attachmentObject)
-  
-server<-list(smtpServer= "server")
-  
+
+attach_obj <- mime_part(x = final_file,
+                        name = attach_name)
+body_with_attach <- list(body, 
+                         attach_obj)
+
 from <- sprintf("email@email.com")
 to <- sprintf(c("email@email.com"))
-  
-sendmail(from,
-         to,
-         subject,
-         bodyWithAttachment,
-         control = server)
+
+# send email ----
+sendmail(from = from,
+         to = to,
+         subject = subject,
+         msg = body_with_attach,
+         control = list(smtpServe = "server"))
