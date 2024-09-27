@@ -28,24 +28,24 @@ Before scheduling a script to be run, you need to check a couple things:
 
 1.	On the computer you plan to schedule the script, launch the **Task Scheduler** application. 
 
-![](images/resources_wts-search.png){fig.align="center" width="20%"}
+![](images/resources_wts-search.png){fig.align="center" width="10%"}
 
 2.	In the task scheduler, go to the **Task Scheduler Library**. You should see it in the upper left corner.
 
-![](images\\resources_wts-library.png){fig.align="center" width="25%"}
+![](images\\resources_wts-library.png){fig.align="center" width="10%"}
 
 3.	Then on the right-hand side, select the option to **Create Task** from the Actions menu:
 
 
-![](images\\resources_wts-library-menu.png){fig.align="center" width="30%"}
+![](images\\resources_wts-library-menu.png){fig.align="center" width="10%"}
 
 4.	In the **General** tab, you’ll need to put in a name and when the task should run. More discussion on this in the [Keep in mind](#keep-in-mind section). Add a description so others know what the script does. Note: once you create the task, you can't change the name of the task, though you can update the description.
 
-![](images\\resources_wts-new-task.png){fig.align="center" width="50%"}
+![](images\\resources_wts-new-task.png){fig.align="center" width="30%"}
 
 5. In the **Triggers** tab, select **New** and then choose when and how often the task should run: 
 
-![](images\\resources_wts-new-trigger.png){fig.align="center" width="50%"}
+![](images\\resources_wts-new-trigger.png){fig.align="center" width="30%"}
 
 6.	Go to the **Actions** tab. This is where you'll specify the R installation and script to run. 
   a. Select **New**.   
@@ -56,7 +56,7 @@ Before scheduling a script to be run, you need to check a couple things:
     * ex: `-e "source('\\root\sub-folder\file.R')"`
     * note: the path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. A single extra space will mean the script isn't found and isn't run. 
     
-![](images\\resources_wts-edit-action.png){.nostretch fig.align="center" width="50%"} 
+![](images\\resources_wts-edit-action.png){.nostretch fig.align="center" width="30%"} 
     
 
 ## Keep in mind
