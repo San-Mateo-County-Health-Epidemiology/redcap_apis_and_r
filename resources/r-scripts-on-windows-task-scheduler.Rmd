@@ -1,0 +1,149 @@
+---
+title: "Windows Task Scheduler"
+output: github_document
+---
+
+# Overview
+
+The Windows Task Scheduler, "is a job scheduler in Microsoft Windows that launches computer programs or scripts at pre-defined times or after specified time intervals" [Wikipedia](https://en.wikipedia.org/wiki/Windows_Task_Scheduler). It typically runs system level things, but you can also schedule your own tasks, including R scripts.
+
+When you schedule a task, you should try to schedule it on a computer that is always on, like a server or a desktop, as tasks won't run if the computer is off. 
+
+# Technical details
+## Updating R scripts so they can be scheduled
+
+Before scheduling a script to be run, you need to check a couple things:
+
+1.	Make sure all the packages you are using in the script are `library()`-ed in the script (just like you need to do with a markdown). Also make sure that all of the packages are installed on the computer where you are scheduling the script. 
+
+2.	Make sure your script runs without errors. Even if the error isn’t important to the script (ex: you accidentally reference a dataset that doesn’t exist and doesn’t affect the code after it), you need to remove it. The scheduler will stop running the R script as soon as it encounters an error. 
+
+3.	If you specify the task should be run whether or not you're logged on or not (more on that a little later), you need to ensure that you're not using any mapped file paths. Ex, if you have folder `\\parent\child` mapped to `B:`, you'd need to reference the full path (`\\parent\child\file`) in the script and not `B:\file`. 
+
+
+## Scheduling R scripts to run 
+
+1.	On the computer you plan to schedule the script, launch the Task Scheduler application. 
+
+![](images/redcap-workflow-email-example.png){.nostretch fig-align="center" width="800px"}
+
+3.	In the task scheduler, click on the Task Scheduler Library:
+
+
+
+
+4.	Then on the right-hand side, select the option to Create Task…:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.	In the General tab, you’ll need to put in a name and select that the task should Run whether user is logged on or not. Add a description so others know what the script does.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.	In the Triggers tab, select New and then choose when and how often the task should run: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7.	In the Actions tab, select New. In the Edit Action tab, you’ll need to fill in the Program/script and Add arguments (optional): fields.
+a.	Program/script: "C:\Program Files\R\R-X.X.X\bin\Rscript.exe"
+i.	R-X.X.X: This should be the newest version of R that exists on the server. 
+b.	Add arguments (optional): -e "source('//svphfs//Epidemiology//Communicable Diseases (CD)//2019 nCoV//Code Repository//R Scripts//<PATH>.R')"
+i.	The path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. 
+
+ 
+
+
+Keep in mind:
+1.	When you change your password, you also need to re-save your tasks with your new password. Windows uses your authentication to run the tasks so it needs an updated password. You should change something in the task (ex: change the time from 6:09 to 6:10) so you will be prompted to re-enter your password
+2.	If you’re using ESSENCE APIs to schedule your scripts, make sure you change your password in the keyring or RNSSP package when you change it in Biosense.
+
+Troubleshooting steps/ideas:
+If your task isn’t working, when you try to run it, you’ll get a Last Run Result of “(0x1)”: 
+
+
+When this happens, here are some steps you can take to troubleshoot.
+1.	Check that the scripts will run on the server
+o	Copy all the code from the R script and run it in R on the server. 
+	You can access the R application from Windows Explorer > Local Disk (C:): > Program Files > R > R-4.X.X (the most current one) > bin > R (not Rscript)
+o	See if the script runs all the way through or if it errors out. If there is an error, review it, fix it, and then try it again.
+o	Once the script is running in R on the server, try triggering the task again. If the task works, yay! If not, continue on.
+2.	Check the task file path
+o	Once you know that the script runs on the server, you know the issue must be somewhere in the task. The issue is probably in the file path in the task
+o	Open the task, go the Actions tab, edit the action and copy the file path from the Add Arguments (optional): field into a text editor of your choice (I usually do it in an email draft)
+o	Review the text. The format should be:
+	e "source('path.R')"
+	the actual path should:
+•	point to the folder using the actual path not letters (ex: \\svphfs\epidemiology vs. J:\)
+•	point exactly to the file!! 
+•	not have extra spaces. 
+o	NOT OK: `svphfs //epidemiology’
+o	OK: `svphfs//epidemiology’
+•	Make sure the file path has the .R or .Rmd at the end
+o	Once you’re sure the path is correct, try running the script again. If the task doesn’t work, continue on:
+3.	If you’re sure the script works and are sure the task is correct, try scheduling a tiny task and running it. Ex: write a script save a string as a data frame only using base R functions. 
+o	Example:  string <- c("hello", "world"), string_df <- data.frame(string), write.csv(string_df, “path”) 
+o	See if that works. 
+o	If it works, then the issue is still with your script, feel free to reach out to Beth to troubleshoot at this point. 
+Maintenance
+•	When you change your password, go into the task scheduler and change your password for each task
+
+
+## Keep in mind
+
+## Troubleshooting
+
