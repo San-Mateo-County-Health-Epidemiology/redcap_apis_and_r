@@ -8,9 +8,10 @@
 <link href="redcap-apis-and-r-for-ed-census-reporting_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="redcap-apis-and-r-for-ed-census-reporting_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="redcap-apis-and-r-for-ed-census-reporting_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <title>Using REDCap APIs to report ED Census data</title>
+  <meta name="author" content="Elizabeth Jump, MPH">
+  <title>USING REDCap APIs TO REPORT ED CENSUS DATA</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +70,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +84,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -390,9 +391,14 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/title-image.jpg" data-background-position="top" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Using REDCap APIs to report ED Census data</h1>
+  <h1 class="title">USING REDCap APIs TO REPORT ED CENSUS DATA</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Elizabeth Jump, MPH 
+</div>
+</div>
 </div>
 
 </section>
@@ -437,11 +443,26 @@
 </section>
 <section id="workflow-with-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Workflow with REDCap</h2>
+<div class="fragment">
+<p><img data-src="images/redcap-workflow-wts-r.png" class="absolute" style="top: 300px; left: 50px; width: 550px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-workflow-redcap.png" class="absolute" style="top: 350px; left: 610px; width: 450px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-workflow-pdf.png" class="absolute" style="top: 527px; left: 610px; width: 300px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-workflow-email-icon.png" class="absolute" style="top: 640px; left: 610px; width: 330px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-workflow-email-example.png" class="absolute" style="top: 350px; left: 1150px; width: 600px; "></p>
+</div>
 </section></section>
 <section>
 <section id="workflow-details" class="title-slide slide level1 center" data-background-image="images/section-workflow-details.jpg" data-background-position="top" data-background-size="1690px">
 <h1>Workflow details</h1>
-<p><img data-src="images/section-workflow-details.jpg" class="absolute" style="top: 0px; left: 0px; right: 0px; "></p>
+
 </section>
 <section id="key-workflow-components" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Key workflow components</h2>
@@ -494,8 +515,10 @@
 </li>
 <li class="fragment">Automated email: package everything together for the end-user<br>
 </li>
-<li class="fragment">(optional): manual data entry</li>
 </ol>
+<div class="fragment">
+<p>Back-up: manual data entry</p>
+</div>
 </section>
 <section id="fetch-data" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>1. Fetch data</h2>
@@ -568,7 +591,15 @@
 </section>
 <section id="redcap-apis" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>2. REDCap APIs</h2>
-<p>&lt;&lt; insert images here &gt;&gt;</p>
+<div class="fragment">
+<p><img data-src="images/redcap-apis-1.png" class="absolute" style="top: 400px; left: 100px; width: 400px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-apis-2.png" class="absolute" style="top: 288px; left: 110px; width: 1400px; "></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/redcap-apis-3.png" class="absolute" style="top: 592px; left: 205px; width: 1500px; "></p>
+</div>
 </section>
 <section id="redcap-apis-in-r" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>2. REDCap APIs in R</h2>
@@ -605,8 +636,7 @@
 </div><div class="column" style="width:40%;">
 <p><strong><code>url</code></strong>: you can find this in the sample code in the <em>API Playground</em> application in REDCap</p>
 <p><strong><code>token</code></strong>: you generate this from the <em>API</em> application in REDCap</p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="getting-data-out-of-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>2. Getting data out of REDCap</h2>
@@ -642,12 +672,12 @@
 <section id="r-markdown" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>3. R Markdown</h2>
 <ul>
-<li class="fragment">R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)</li>
-<li class="fragment">You can render a Markdown or Quarto file from another script and specify where you want the file to be saved</li>
+<li class="fragment">R Markdown and Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)</li>
+<li class="fragment">You can render an R Markdown or Quarto file from another script and specify where you want the file to be saved</li>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1-3|5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>today <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">Sys.Date</span>(), <span class="st">"-"</span>, <span class="st">"_"</span>)</span>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1-3|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>today <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">Sys.Date</span>(), <span class="st">"-"</span>, <span class="st">"_"</span>)</span>
 <span id="cb4-2"><a href=""></a>output_file <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"A:/path/ed_census_"</span>, today, <span class="st">".pdf"</span>)</span>
 <span id="cb4-3"><a href=""></a></span>
 <span id="cb4-4"><a href=""></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="at">input =</span> <span class="st">"A:/source-path/ed_census_markdown_pdf.Rmd"</span>,</span>
@@ -698,7 +728,7 @@
 <h2>3. R Markdown</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ed-census-chart-markdown.png" class="nostretch quarto-figure quarto-figure-center" width="800"></p>
+<p><img data-src="images/ed-census-chart-markdown.png" class="nostretch quarto-figure quarto-figure-center" width="900"></p>
 </figure>
 </div>
 </section>
@@ -747,28 +777,23 @@
 <h2>4. Automated email</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/automated-email-example.png" class="nostretch quarto-figure quarto-figure-center" width="800"></p>
+<p><img data-src="images/redcap-workflow-email-example.png" class="nostretch quarto-figure quarto-figure-center" width="800"></p>
 </figure>
 </div>
 </section>
 <section id="back-up-manual-entry" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>5. Back-up: manual entry</h2>
+<h2>Back-up: manual entry</h2>
 <ul>
-<li class="fragment">If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap<br>
-</li>
+<li class="fragment">If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap and render the PDF themselves</li>
 <li class="fragment">This is a huge pro of storing the data in REDCap instead of in an Excel or database without a front end</li>
 </ul>
 </section></section>
 <section>
-<section id="lessons-learned" class="title-slide slide level1 center">
+<section id="lessons-learned" class="title-slide slide level1 center" data-background-image="images/section-lessons-learned.jpg" data-background-position="top" data-background-size="1690px">
 <h1>Lessons learned</h1>
 
 </section>
-<section id="lessons-learned-1" class="slide level2 section-header">
-<h2>Lessons learned</h2>
-<p><img data-src="images/section-lessons-learned.jpg" class="absolute" style="top: 0px; left: 0px; right: 0,; width: 1690px; "></p>
-</section>
-<section id="lessons-learned-2" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<section id="lessons-learned-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
 <h2>Lessons learned</h2>
 <ul>
 <li class="fragment">When choosing workflows to automate, it’s best to choose a mature workflow with defined business rules<br>
@@ -778,9 +803,9 @@
 <li class="fragment">If you send an email, include explanations of the workflow to foster trust among end-users</li>
 </ul>
 </section></section>
-<section id="questions" class="title-slide slide level1 center" data-background-image="images/section-workflow-details.jpg" data-background-position="top" data-background-size="1690px">
-<h1>Questions?</h1>
-<p><img data-src="images/section-questions.jpg" class="absolute" style="top: 0px; left: 0px; right: 0,; width: 1690px; "></p>
+<section id="any-questions" class="title-slide slide level1 center" data-background-image="images/section-workflow-details.jpg" data-background-position="top" data-background-size="1690px">
+<h1>Any questions</h1>
+
 </section>
 
 <section>
@@ -1117,18 +1142,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1160,7 +1174,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1168,7 +1204,7 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -1,5 +1,6 @@
 ---
-title: "Using REDCap APIs to report ED Census data"
+title: "USING REDCap APIs TO REPORT ED CENSUS DATA"
+author: Elizabeth Jump, MPH
 format: 
   revealjs:
       incremental: true
@@ -81,8 +82,6 @@ Each day, we report the ED Census for each of our six hospitals and the census o
 
 # Workflow details {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
 
-![](images/section-workflow-details.jpg){.absolute top="0" left="0" right="0"}
-
 ## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
 
 ::: fragment
@@ -123,7 +122,10 @@ This whole workflow runs from a single R script. The R script has four main comp
 2.  REDCap APIs: send data in and out of REDCap\
 3.  R Markdown: format data into a PDF report\
 4.  Automated email: package everything together for the end-user\
-5.  (optional): manual data entry
+
+::: {.fragment}
+Back-up: manual data entry
+:::
 
 ## 1. Fetch data {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -265,12 +267,12 @@ ed_census_fields <- exportRecordsTyped(rcon = con,
 
 ## 3. R Markdown {background-image="images/blank-slide.png" background-size="contain"}
 
--   R Markdown or Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)
--   You can render a Markdown or Quarto file from another script and specify where you want the file to be saved
+-   R Markdown and Quarto allow you to render R code into a document (PDF, HTML, Word, PPT, etc)
+-   You can render an R Markdown or Quarto file from another script and specify where you want the file to be saved
 
 ::: fragment
 ```{r}
-#| code-line-numbers: "|1-3|5-6"
+#| code-line-numbers: "|1-3|4-5"
 today <- str_replace_all(Sys.Date(), "-", "_")
 output_file <- paste0("A:/path/ed_census_", today, ".pdf")
 
@@ -322,7 +324,7 @@ edvol %>%
 
 ## 3. R Markdown {.nostretch background-image="images/blank-slide.png" background-size="contain"}
 
-![](images/ed-census-chart-markdown.png){.nostretch fig-align="center" width="800px"}
+![](images/ed-census-chart-markdown.png){.nostretch fig-align="center" width="900px"}
 
 ## 4. Automated email {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -368,16 +370,12 @@ sendmail(from = from,
 
 ![](images/redcap-workflow-email-example.png){.nostretch fig-align="center" width="800px"}
 
-## 5. Back-up: manual entry {background-image="images/blank-slide.png" background-size="contain"}
+## Back-up: manual entry {background-image="images/blank-slide.png" background-size="contain"}
 
--   If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap
+-   If the API to get the data is down and/or if data are missing and need to be entered manually, the person sending the report will manually enter data in REDCap and render the PDF themselves
 -   This is a huge pro of storing the data in REDCap instead of in an Excel or database without a front end
 
-# Lessons learned
-
-## Lessons learned {.section-header}
-
-![](images/section-lessons-learned.jpg){.absolute top="0" left="0" right="0," width="1690"}
+# Lessons learned {background-image="images/section-lessons-learned.jpg" background-position="top" background-size="1690px"}
 
 ## Lessons learned {background-image="images/blank-slide.png" background-size="contain"}
 
@@ -385,9 +383,7 @@ sendmail(from = from,
 -   Depending on your workflow, you might want to save a copy of the data you pull for record keeping\
 -   If you send an email, include explanations of the workflow to foster trust among end-users
 
-# Questions? {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
-
-![](images/section-questions.jpg){.absolute top="0" left="0" right="0," width="1690"}
+# Any questions {background-image="images/section-workflow-details.jpg" background-position="top" background-size="1690px"}
 
 # Additional resources {background-image="images/section-additional-resources.jpg" background-position="top" background-size="1690px"}
 
