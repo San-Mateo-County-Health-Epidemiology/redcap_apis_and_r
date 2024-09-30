@@ -15,7 +15,7 @@ code is
 
 ------------------------------------------------------------------------
 
-Additional Resources:
+## Additional Resources:
 
 - [Windows Task
   Scheduler](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/r-scripts-on-windows-task-scheduler.md)
@@ -24,25 +24,29 @@ Additional Resources:
 
 ------------------------------------------------------------------------
 
-**R Markdown and Quarto**
+## R Markdown and Quarto
+
+**R Markdown**
 
 - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
-
 - [R Markdown Cheat Sheet](https://rmarkdown.rstudio.com/lesson-15.html)
+
+**Quarto**
 
 - [Quarto
   Introduction](https://quarto.org/docs/get-started/hello/rstudio.html)
-
 - [Quarto chapter, R for Data Science](https://r4ds.hadley.nz/quarto)
 
 ------------------------------------------------------------------------
 
-**APIs**
+## Application Programming Interfaces (API)
+
+**General knowlege**
 
 - [Overview of APIs](https://www.postman.com/what-is-an-api/)
 - [APIs and R](https://www.dataquest.io/blog/r-api-tutorial/)
 
-R packages for using APIs with REDCap:
+**R packages for using APIs with REDCap**
 
 - [httr](https://httr.r-lib.org/): this is what is used in the API
   playground in REDCap
