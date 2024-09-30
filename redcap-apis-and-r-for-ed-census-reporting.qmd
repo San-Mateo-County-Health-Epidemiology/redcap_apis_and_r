@@ -363,7 +363,7 @@ sendmail(from = from,
          to = to,
          subject = subject,
          msg = body_with_attach,
-         control = list(smtpServe = "server"))
+         control = list(smtpServer = "server"))
 ```
 
 ## 4. Automated email {.nostretch background-image="images/blank-slide.png" background-size="contain"}
