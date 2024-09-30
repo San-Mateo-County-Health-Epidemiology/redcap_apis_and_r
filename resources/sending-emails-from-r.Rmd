@@ -1,0 +1,20 @@
+---
+title: "Sending emails from R"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+
+There are many use cases for sending emails from R. It's especially useful when you're scheduling a script, as it allows you to receive an email confirmation that the script ran and to receive a summary of what the script did, ie. how many records were processed, important values, etc. 
+
+There are likely many ways to send emails from R, but we typically use two packages [`sendmailR`](https://github.com/olafmersmann/sendmailR) and [`blastula`](https://github.com/rstudio/blastula). `sendmailR` is great for plain text emails and `blastula` is good for rich text emails. 
+
+This overview will provide basic examples for how to use these packages. Additionaly information is available at the links above and on the internet. 
+
+# `sendmailR`
+
+# `blastula`
