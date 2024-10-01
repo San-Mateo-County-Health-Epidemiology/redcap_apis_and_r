@@ -4,11 +4,10 @@
 # REDCap APIs and R
 
 This repo contains
-<a href="https://san-mateo-county-health-epidemiology.github.io/redcap_apis_and_r/#/title-slide" target="_blank">slides</a>
-
-\[slides\]) and resources to explain our workflow of managing daily ED
-Census data in REDCap. While the data are stored in REDCap, the data
-processing, importing and visualizing is done from R.
+[slides](https://san-mateo-county-health-epidemiology.github.io/redcap_apis_and_r/#/title-slide)
+and resources to explain our workflow of managing daily ED Census data
+in REDCap. While the data are stored in REDCap, the data processing,
+importing and visualizing is done from R.
 
 A general outline of the workflow is in the slides and an outline of the
 code is
