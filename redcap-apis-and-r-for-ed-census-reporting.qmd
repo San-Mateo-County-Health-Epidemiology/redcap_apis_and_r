@@ -11,7 +11,7 @@ format:
       linkcolor: "#056cb6"
       theme: _extensions/custom.scss
 title-slide-attributes: 
-  data-background-image: "images/title-image.jpg"
+  data-background-image: "images/title-image-with-logo.png"
   data-background-size: "contain"
   data-background-position: "top"
 editor: visual
@@ -198,7 +198,7 @@ importRecords(redcap_con,
 
 There are several different R packages you can use to get data from REDCap into R with an API
 
--   [httr](https://httr.r-lib.org/): this is what is used in the API playground in REDCap\
+-   [httr](https://httr.r-lib.org/): this is what is used in the API playground in REDCap
 -   [redcapAPI](https://github.com/vubiostat/redcapAPI): this is what we typically use
 -   [REDCapR](https://ouhscbbmc.github.io/REDCapR/): we’ve used this in the past when we couldn’t get what we needed from REDCapAPI
 
@@ -230,9 +230,9 @@ importRecords(con,
 :::
 
 ::: {.column width="40%"}
-**`url`**: you can find this in the sample code in the *API Playground* application in REDCap
+**`url`**: you can find this in the sample code in the <ins>API Playground</ins> application in REDCap
 
-**`token`**: you generate this from the *API* application in REDCap
+**`token`**: you generate this from the <ins>API</ins> application in REDCap
 :::
 :::
 
@@ -387,6 +387,11 @@ sendmail(from = from,
 
 # Additional resources {background-image="images/section-additional-resources.jpg" background-position="top" background-size="1690px"}
 
-## Windows task scheduler {background-image="images/blank-slide.png" background-size="contain"}
+## Additional resources {background-image="images/blank-slide.png" background-size="contain"}
 
-## R Markdown/Quarto {background-image="images/blank-slide.png" background-size="contain"}
+There are some additional resources on the [.README in GitHub](https://github.com/elizabethjump/redcap_apis_and_r/tree/main). The resources include guides and additional information for:
+
+- Windows Task Scheduler
+- Sending emails from R
+- APIs
+- R Markdown and Quarto
