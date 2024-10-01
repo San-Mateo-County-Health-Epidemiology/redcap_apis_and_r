@@ -85,33 +85,41 @@ Each day, we report the ED Census for each of our six hospitals and the census o
 ## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
 
 ::: fragment
-REDCap
 
--   Gives us a stable place to store our data\
--   Allows us to create new records for new data, instead of overwriting an excel file each day\
+**REDCap**  
+
+-   Gives us a stable place to store our data  
+-   Allows us to create new records for new data, instead of overwriting an excel file each day  
+
 :::
 
 ::: fragment
-R
 
--   A statistical programming language that is also used for data management and data science
--   R processes, moves and formats the data in and out of REDCap\
+**R**  
+
+-   A statistical programming language that is also used for data management and data science  
+-   R processes, moves and formats the data in and out of REDCap 
+
 :::
 
 ## Key workflow components {background-image="images/blank-slide.png" background-size="contain"}
 
 ::: fragment
-Windows Task Scheduler
 
--   Default application on Windows for running tasks automatically
--   Allows the process to be fully automated and run without user intervention
+**Windows Task Scheduler**  
+
+-   Default application on Windows for running tasks automatically  
+-   Allows the process to be fully automated and run without user intervention  
+
 :::
 
 ::: fragment
-Application Programming Interfaces (API)
 
--   A method of sending and receiving data\
--   Can run APIs in and out of REDCap and other systems\
+**Application Programming Interfaces (API)**  
+
+-   A method of sending and receiving data  
+-   Can run APIs in and out of REDCap and other systems  
+
 :::
 
 ## Workflow steps {background-image="images/blank-slide.png" background-size="contain"}
