@@ -15,7 +15,7 @@ code is
 
 ------------------------------------------------------------------------
 
-## Additional Resources:
+## Additional resources:
 
 - [Windows Task
   Scheduler](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/r-scripts-on-windows-task-scheduler.md)
@@ -54,3 +54,10 @@ code is
   typically use
 - [REDCapR](https://ouhscbbmc.github.io/REDCapR/): we’ve used this in
   the past when we couldn’t get what we needed from REDCapAPI
+
+------------------------------------------------------------------------
+
+## Other REDCap and R things
+
+- [Downloading files from
+  REDCap](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/downloading-files-from-redcap.md)
