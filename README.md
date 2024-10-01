@@ -4,7 +4,7 @@
 # REDCap APIs and R
 
 This repo contains
-<a href="https://elizabethjump.github.io/redcap_apis_and_r/#/title-slide" target="_blank">slides</a>
+<a href="https://san-mateo-county-health-epidemiology.github.io/redcap_apis_and_r/#/title-slide" target="_blank">slides</a>
 
 \[slides\]) and resources to explain our workflow of managing daily ED
 Census data in REDCap. While the data are stored in REDCap, the data
