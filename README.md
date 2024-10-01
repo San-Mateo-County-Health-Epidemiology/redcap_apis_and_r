@@ -12,16 +12,16 @@ processing, importing and visualizing is done from R.
 
 A general outline of the workflow is in the slides and an outline of the
 code is
-[here](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/workflow-outline.R).
+[here](https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/workflow-outline.R).
 
 ------------------------------------------------------------------------
 
 ## Additional resources:
 
 - [Windows Task
-  Scheduler](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/r-scripts-on-windows-task-scheduler.md)
+  Scheduler](https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/r-scripts-on-windows-task-scheduler.md)
 - [Sending emails from
-  R](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/sending-emails-from-r.md)
+  R](https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/sending-emails-from-r.md)
 
 ------------------------------------------------------------------------
 
@@ -61,4 +61,4 @@ code is
 ## Other REDCap and R things
 
 - [Downloading files from
-  REDCap](https://github.com/elizabethjump/redcap_apis_and_r/blob/main/resources/downloading-files-from-redcap.md)
+  REDCap](https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/downloading-files-from-redcap.md)
