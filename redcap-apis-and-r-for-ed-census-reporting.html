@@ -390,7 +390,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/title-image.jpg" data-background-position="top" data-background-size="contain" class="quarto-title-block center">
+<section id="title-slide" data-background-image="images/title-image-with-logo.png" data-background-position="top" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">USING REDCap APIs TO REPORT ED CENSUS DATA</h1>
 
 <div class="quarto-title-authors">
@@ -605,8 +605,7 @@ Elizabeth Jump, MPH
 <h2>2. REDCap APIs in R</h2>
 <p>There are several different R packages you can use to get data from REDCap into R with an API</p>
 <ul>
-<li class="fragment"><a href="https://httr.r-lib.org/">httr</a>: this is what is used in the API playground in REDCap<br>
-</li>
+<li class="fragment"><a href="https://httr.r-lib.org/">httr</a>: this is what is used in the API playground in REDCap</li>
 <li class="fragment"><a href="https://github.com/vubiostat/redcapAPI">redcapAPI</a>: this is what we typically use</li>
 <li class="fragment"><a href="https://ouhscbbmc.github.io/REDCapR/">REDCapR</a>: we’ve used this in the past when we couldn’t get what we needed from REDCapAPI</li>
 </ul>
@@ -634,8 +633,8 @@ Elizabeth Jump, MPH
 <span id="cb2-13"><a href=""></a>              <span class="at">returnContent =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p><strong><code>url</code></strong>: you can find this in the sample code in the <em>API Playground</em> application in REDCap</p>
-<p><strong><code>token</code></strong>: you generate this from the <em>API</em> application in REDCap</p>
+<p><strong><code>url</code></strong>: you can find this in the sample code in the <ins>API Playground</ins> application in REDCap</p>
+<p><strong><code>token</code></strong>: you generate this from the <ins>API</ins> application in REDCap</p>
 </div></div>
 </section>
 <section id="getting-data-out-of-redcap" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
@@ -770,7 +769,7 @@ Elizabeth Jump, MPH
 <span id="cb6-22"><a href=""></a>         <span class="at">to =</span> to,</span>
 <span id="cb6-23"><a href=""></a>         <span class="at">subject =</span> subject,</span>
 <span id="cb6-24"><a href=""></a>         <span class="at">msg =</span> body_with_attach,</span>
-<span id="cb6-25"><a href=""></a>         <span class="at">control =</span> <span class="fu">list</span>(<span class="at">smtpServe =</span> <span class="st">"server"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-25"><a href=""></a>         <span class="at">control =</span> <span class="fu">list</span>(<span class="at">smtpServer =</span> <span class="st">"server"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="automated-email-2" class="slide level2 nostretch" data-background-image="images/blank-slide.png" data-background-size="contain">
@@ -813,11 +812,15 @@ Elizabeth Jump, MPH
 <h1>Additional resources</h1>
 
 </section>
-<section id="windows-task-scheduler" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>Windows task scheduler</h2>
-</section>
-<section id="r-markdownquarto" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
-<h2>R Markdown/Quarto</h2>
+<section id="additional-resources-1" class="slide level2" data-background-image="images/blank-slide.png" data-background-size="contain">
+<h2>Additional resources</h2>
+<p>There are some additional resources on the <a href="https://github.com/elizabethjump/redcap_apis_and_r/tree/main">.README in GitHub</a>. The resources include guides and additional information for:</p>
+<ul>
+<li class="fragment">Windows Task Scheduler</li>
+<li class="fragment">Sending emails from R</li>
+<li class="fragment">APIs</li>
+<li class="fragment">R Markdown and Quarto</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
