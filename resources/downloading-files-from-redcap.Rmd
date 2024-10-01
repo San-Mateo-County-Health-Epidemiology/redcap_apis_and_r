@@ -1,0 +1,145 @@
+---
+title: "Downloading files from REDCap"
+output: github_document
+---
+
+# Overview
+
+This walks through how to export files from REDCap records and save them somewhere centrally. We used this code to get 40,000 attachments out of a REDCap project. We also used a version of this code to move (download, save and upload) files from one project to another. 
+
+# Technical details
+
+## Setup
+First, make sure you install and `library()` these packages:
+
+```{r eval=FALSE, echo=TRUE}
+library(tidyverse)
+library(RCurl)
+library(janitor)
+library(redcapAPI)
+library(lubridate)
+```
+
+## Connect to REDCap
+Next, you should set up your connection to REDCap and export all of the record ids so you have a list to loop through. 
+
+```{r eval=FALSE, echo=TRUE}
+redcap_con <- redcapConnection(url = "url", 
+                               token = "token")
+
+record_ids <- exportRecordsTyped(redcap_con,
+                                 fields = "record_id")
+```
+
+## Identify fields that might have files in them
+Identify all of the fields in the project that might have a file in them. There are many ways to do this, but it is probably easiest to download the data dictionary from REDCap, read it into R and filter it to keep all of the fields where `field_type = "file"`.
+
+```{r eval=FALSE, echo=TRUE}
+data_dict <- rio::import("")
+
+file_fields <- data_dict %>%
+  clean_names() %>%
+  filter(variable_field_name == "record_id" |
+           field_type == "file") %>%
+  select(variable_field_name) %>%
+  unlist() %>%
+  unname()
+
+```
+
+## Export records to see how many files there are
+Export the records and all of the fields that might contain a file in them. If you have a large project, you might want to loop through the records in groups so the export API doesn't time out. 
+
+You can specify the group size that works best for you. If you're exporting a lot of fields, you probably want a smaller group size. If you're exporting few fields, you can use a bigger group size. 
+
+```{r eval=FALSE, echo=TRUE}
+# group records for export 
+group_size <- 500
+
+record_ids1 <- record_ids %>%
+  mutate(group = ceiling(row_number()/group_size)) %>%
+  select(record_id, group)
+
+groups <- record_ids1 %>%
+  distinct(group) %>%
+  pull(group)
+
+# loop through and store results in a data frame 
+source_files <- data.frame()
+
+for (i in groups) {
+  print(i)
+  
+  records <- record_ids1 %>%  
+    filter(group == i) %>%
+    pull(record_id)
+  
+  files <- exportRecordsTyped(source_redcap_con,
+                              records = records,
+                              fields = file_fields)
+  
+  source_files <- source_files %>%
+    rbind(files)
+  
+}
+
+```
+
+## Download files
+
+Now, you can download the files! Specify the directory where you want to store the files. Then filter the dataset from the previous step to identify which records have files in which fields. 
+
+This code assumes you want to save the files for each record in its own directory. So all files for record 1 are in a folder named "1", all files for record 2 are in folder named "2" and so on. 
+
+```{r eval=FALSE, echo=TRUE}
+
+parent_dir <- "data/"
+
+# figure out which records have files in which fields ----
+source_attach <- source_files %>%
+  select(!matches("complete|repeat")) %>%
+  mutate(across(everything(), ~as.character(.x))) %>% 
+  pivot_longer(names_to = "doc_type",
+               values_to = "val",
+               values_drop_na = T,
+               cols = !matches("record_id")) %>%
+  mutate(dir = paste0(parent_dir, record_id))
+```
+
+This code will create a directory for each record within the parent directory. 
+
+```{r eval=FALSE, echo=TRUE}
+# create a directory for each record ----
+dirs <- source_attach %>%
+  distinct(dir) %>%
+  pull(dir)
+
+for (i in dirs) {
+  
+  dir <- i
+  
+  if (!dir.exists(dir)) {
+    
+    dir.create(dir, recursive = T) 
+    
+  }
+  
+}
+
+```
+
+This code downloads the attachments into each record's directory. 
+
+```{r eval=FALSE, echo=TRUE}
+
+# download the records and save them in the directory ----
+for (i in 1:nrow(source_attach)) {
+  
+  docs <- exportFiles(rcon = source_redcap_con, 
+                      record = source_attach$record_id[i], 
+                      field = source_attach$doc_type[i],
+                      dir = source_attach$dir[i], 
+                      filePrefix = F) 
+  
+}
+```
