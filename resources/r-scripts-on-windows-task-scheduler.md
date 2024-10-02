@@ -100,7 +100,7 @@ Before scheduling a script to be run, you need to check a couple things:
         A single extra space will mean the script isn’t found and isn’t
         run.
 
-<img src="images\\resources_wts-edit-action.png" width="900" />
+<img src="images\\resources_wts-edit-action.png" width="800" />
 
 ## 2.3 Keep in mind
 

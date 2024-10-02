@@ -58,7 +58,7 @@ Before scheduling a script to be run, you need to check a couple things:
     ii.  note: the path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. A single extra space will mean the script isn't found and isn't run.  
     
   
-<img src="images\\resources_wts-edit-action.png" width="900" />
+<img src="images\\resources_wts-edit-action.png" width="800" />
     
 
 ## Keep in mind
