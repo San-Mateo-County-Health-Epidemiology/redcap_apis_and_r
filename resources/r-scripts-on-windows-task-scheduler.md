@@ -68,21 +68,7 @@ Before scheduling a script to be run, you need to check a couple things:
     what the script does. Note: once you create the task, you can’t
     change the name of the task, though you can update the description.
 
-<img src="images\resources_wts-new-task.png" style="width:30.0%" /> 200
-
-<img src="images\\resources_wts-new-task.png" width="200" />
-
-300
-
-<img src="images\\resources_wts-new-task.png" width="300" />
-
-400
-
-<img src="images\\resources_wts-new-task.png" width="400" />
-
-500
-
-<img src="images\\resources_wts-new-task.png" width="500" />
+<img src="images\resources_wts-new-task.png" style="width:30.0%" />
 
 5.  In the **Triggers** tab, select **New** and then choose when and how
     often the task should run:
@@ -114,7 +100,7 @@ Before scheduling a script to be run, you need to check a couple things:
         A single extra space will mean the script isn’t found and isn’t
         run.
 
-<img src="images\resources_wts-edit-action.png" style="width:10.0%" />
+<img src="images\\resources_wts-edit-action.png" width="900" />
 
 ## 2.3 Keep in mind
 

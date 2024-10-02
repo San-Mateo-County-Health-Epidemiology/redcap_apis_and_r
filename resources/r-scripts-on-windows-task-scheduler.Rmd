@@ -42,21 +42,6 @@ Before scheduling a script to be run, you need to check a couple things:
 4.	In the **General** tab, you’ll need to put in a name and when the task should run. More discussion on this in the [Keep in mind](#keep-in-mind section). Add a description so others know what the script does. Note: once you create the task, you can't change the name of the task, though you can update the description.
 
 ![](images\\resources_wts-new-task.png){width="30%"}
-200 
-
-<img src="images\\resources_wts-new-task.png" width="200" />
-
-300 
-
-<img src="images\\resources_wts-new-task.png" width="300" />
-
-400 
-
-<img src="images\\resources_wts-new-task.png" width="400" />
-
-500
-
-<img src="images\\resources_wts-new-task.png" width="500" />
 
 5. In the **Triggers** tab, select **New** and then choose when and how often the task should run: 
 
@@ -72,7 +57,8 @@ Before scheduling a script to be run, you need to check a couple things:
     i.  ex: `-e "source('\\root\sub-folder\file.R')"`  
     ii.  note: the path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. A single extra space will mean the script isn't found and isn't run.  
     
-![](images\\resources_wts-edit-action.png){width="10%"} 
+  
+<img src="images\\resources_wts-edit-action.png" width="900" />
     
 
 ## Keep in mind
