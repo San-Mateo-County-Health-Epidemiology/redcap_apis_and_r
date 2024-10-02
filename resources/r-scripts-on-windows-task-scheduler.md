@@ -70,6 +70,8 @@ Before scheduling a script to be run, you need to check a couple things:
 
 <img src="images\resources_wts-new-task.png" style="width:30.0%" />
 
+<img src="https://https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/images/resources_wts-new-task.png" width="200" />
+
 5.  In the **Triggers** tab, select **New** and then choose when and how
     often the task should run:
 

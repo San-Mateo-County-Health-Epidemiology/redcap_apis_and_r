@@ -43,9 +43,13 @@ Before scheduling a script to be run, you need to check a couple things:
 
 ![](images\\resources_wts-new-task.png){width="30%"}
 
+<img src="https://https://github.com/San-Mateo-County-Health-Epidemiology/redcap_apis_and_r/blob/main/resources/images/resources_wts-new-task.png" width="200" />
+
+
 5. In the **Triggers** tab, select **New** and then choose when and how often the task should run: 
 
 ![](images\\resources_wts-new-trigger.png){width="30%"}
+
 
 6.	Go to the **Actions** tab. This is where you'll specify the R installation and script to run. 
   a. Select **New**.   
