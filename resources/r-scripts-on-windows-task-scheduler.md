@@ -94,7 +94,7 @@ Before scheduling a script to be run, you need to check a couple things:
     you’ll specify the path to the script you want to schedule. Prefix
     the script with `-e "source('` and include a `')"` at the end. Use a
     full file path here.  
-    1.  ex: `-e "source('\\root\sub-folder\file.R')"`  
+    1.  ex: `-e "source('//root/sub-folder/file.R')"`  
     2.  note: the path needs to be EXACTLY where the script lives.
         Triple check that you don’t have extra spaces, characters, etc.
         A single extra space will mean the script isn’t found and isn’t
@@ -157,8 +157,8 @@ When this happens, here are some steps you can take to troubleshoot.
       `\\root\sub-folder` not `B:`)
     - point exactly to the file!!
     - not have extra spaces.
-      - NOT OK: `\\ root\sub-folder`
-      - OK: `\\root\sub-folder`
+      - NOT OK: `// root/sub-folder`
+      - OK: `//root/sub-folder`
     - Make sure the file path has the `.R` or `.Rmd` at the end
 - Once you’re sure the path is correct, try running the script again. If
   the task doesn’t work, continue on.
