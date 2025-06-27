@@ -54,7 +54,7 @@ Before scheduling a script to be run, you need to check a couple things:
   c. In the **Program/script** field, fill in the R installation you want the Task to run on. Make sure you use the `Rscript.exe` and not `R.exe`.  
     i. ex: `Program/script: "C:\Program Files\R\R-X.X.X\bin\Rscript.exe"` (note, the path to the R installation should be wrapped in quotes)  
   d. Add arguments (optional) field is NOT optional here. This is where you'll specify the path to the script you want to schedule. Prefix the script with `-e "source('` and include a `')"` at the end. Use a full file path here.  
-    i.  ex: `-e "source('\\root\sub-folder\file.R')"`  
+    i.  ex: `-e "source('//root/sub-folder/file.R')"`  
     ii.  note: the path needs to be EXACTLY where the script lives. Triple check that you don’t have extra spaces, characters, etc. A single extra space will mean the script isn't found and isn't run.  
     
   
@@ -91,8 +91,8 @@ When this happens, here are some steps you can take to troubleshoot.
       * point to the folder using the actual path not letters (ex: `\\root\sub-folder` not `B:`)
       * point exactly to the file!! 
       * not have extra spaces. 
-        * NOT OK: `\\ root\sub-folder`
-        * OK: `\\root\sub-folder`
+        * NOT OK: `// root/sub-folder`
+        * OK: `//root/sub-folder`
       * Make sure the file path has the `.R` or `.Rmd` at the end
   * Once you’re sure the path is correct, try running the script again. If the task doesn’t work, continue on.
   
