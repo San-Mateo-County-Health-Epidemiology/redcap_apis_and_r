@@ -50,17 +50,17 @@ Before scheduling a script to be run, you need to check a couple things:
 1.  On the computer you plan to schedule the script, launch the **Task
     Scheduler** application.
 
-<img src="images/resources_wts-search.png" style="width:10.0%" />
+<img src="images\\resources_wts-search.png" width="300" />
 
 2.  In the task scheduler, go to the **Task Scheduler Library**. You
     should see it in the upper left corner.
 
-<img src="images\resources_wts-library.png" style="width:10.0%" />
+<img src="images\\resources_wts-library.png" width="200" />
 
 3.  Then on the right-hand side, select the option to **Create Task**
     from the Actions menu:
 
-<img src="images\resources_wts-library-menu.png" style="width:10.0%" />
+<img src="images\\resources_wts-library-menu.png" width="300" />
 
 4.  In the **General** tab, you’ll need to put in a name and when the
     task should run. More discussion on this in the [Keep in
@@ -68,12 +68,12 @@ Before scheduling a script to be run, you need to check a couple things:
     what the script does. Note: once you create the task, you can’t
     change the name of the task, though you can update the description.
 
-<img src="images\resources_wts-new-task.png" style="width:30.0%" />
+<img src="images\\resources_wts-new-task.png" width="700" />
 
 5.  In the **Triggers** tab, select **New** and then choose when and how
     often the task should run:
 
-<img src="images\resources_wts-new-trigger.png" style="width:30.0%" />
+<img src="images\\resources_wts-new-trigger.png" width="700" />
 
 6.  Go to the **Actions** tab. This is where you’ll specify the R
     installation and script to run.
@@ -100,7 +100,7 @@ Before scheduling a script to be run, you need to check a couple things:
         A single extra space will mean the script isn’t found and isn’t
         run.
 
-<img src="images\\resources_wts-edit-action.png" width="800" />
+<img src="images\\resources_wts-edit-action.png" width="700" />
 
 ## 2.3 Keep in mind
 
