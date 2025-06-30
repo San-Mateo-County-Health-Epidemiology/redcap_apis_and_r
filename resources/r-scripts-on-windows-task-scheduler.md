@@ -50,17 +50,17 @@ Before scheduling a script to be run, you need to check a couple things:
 1.  On the computer you plan to schedule the script, launch the **Task
     Scheduler** application.
 
-<img src="images/resources_wts-search.png" style="width:10.0%" />
+<img src="images/resources_wts-search.png" style="width:30.0%" />
 
 2.  In the task scheduler, go to the **Task Scheduler Library**. You
     should see it in the upper left corner.
 
-<img src="images\resources_wts-library.png" style="width:10.0%" />
+<img src="images\resources_wts-library.png" style="width:30.0%" />
 
 3.  Then on the right-hand side, select the option to **Create Task**
     from the Actions menu:
 
-<img src="images\resources_wts-library-menu.png" style="width:10.0%" />
+<img src="images\resources_wts-library-menu.png" style="width:40.0%" />
 
 4.  In the **General** tab, you’ll need to put in a name and when the
     task should run. More discussion on this in the [Keep in
@@ -68,12 +68,12 @@ Before scheduling a script to be run, you need to check a couple things:
     what the script does. Note: once you create the task, you can’t
     change the name of the task, though you can update the description.
 
-<img src="images\resources_wts-new-task.png" style="width:30.0%" />
+<img src="images\resources_wts-new-task.png" style="width:50.0%" />
 
 5.  In the **Triggers** tab, select **New** and then choose when and how
     often the task should run:
 
-<img src="images\resources_wts-new-trigger.png" style="width:30.0%" />
+<img src="images\resources_wts-new-trigger.png" style="width:50.0%" />
 
 6.  Go to the **Actions** tab. This is where you’ll specify the R
     installation and script to run.
@@ -94,7 +94,7 @@ Before scheduling a script to be run, you need to check a couple things:
     you’ll specify the path to the script you want to schedule. Prefix
     the script with `-e "source('` and include a `')"` at the end. Use a
     full file path here.  
-    1.  ex: `-e "source('\\root\sub-folder\file.R')"`  
+    1.  ex: `-e "source('//root/sub-folder/file.R')"`  
     2.  note: the path needs to be EXACTLY where the script lives.
         Triple check that you don’t have extra spaces, characters, etc.
         A single extra space will mean the script isn’t found and isn’t
@@ -157,8 +157,8 @@ When this happens, here are some steps you can take to troubleshoot.
       `\\root\sub-folder` not `B:`)
     - point exactly to the file!!
     - not have extra spaces.
-      - NOT OK: `\\ root\sub-folder`
-      - OK: `\\root\sub-folder`
+      - NOT OK: `// root/sub-folder`
+      - OK: `//root/sub-folder`
     - Make sure the file path has the `.R` or `.Rmd` at the end
 - Once you’re sure the path is correct, try running the script again. If
   the task doesn’t work, continue on.
