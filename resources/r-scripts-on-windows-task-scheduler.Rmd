@@ -28,7 +28,7 @@ Before scheduling a script to be run, you need to check a couple things:
 
 1.	On the computer you plan to schedule the script, launch the **Task Scheduler** application. 
 
-![](images/resources_wts-search.png){width="40%"}
+![](images/resources_wts-search.png){width="30%"}
 
 2.	In the task scheduler, go to the **Task Scheduler Library**. You should see it in the upper left corner.
 
