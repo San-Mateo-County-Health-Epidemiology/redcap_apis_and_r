@@ -50,7 +50,7 @@ Before scheduling a script to be run, you need to check a couple things:
 1.  On the computer you plan to schedule the script, launch the **Task
     Scheduler** application.
 
-<img src="images/resources_wts-search.png" style="width:40.0%" />
+<img src="images/resources_wts-search.png" style="width:30.0%" />
 
 2.  In the task scheduler, go to the **Task Scheduler Library**. You
     should see it in the upper left corner.
